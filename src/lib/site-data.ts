@@ -10,11 +10,29 @@ export const partners = [
   { name: "Wüstenrot", url: "https://www.wustenrot.sk/", logo: "https://www.respect-slovakia.sk/wp-content/uploads/2020/01/wustenrot.png" },
 ];
 
+const u = (id: string, w = 1200, h = 1500) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
+
 export const team = [
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: "https://readdy.ai/api/search-image?query=professional%20woman%20insurance%20advisor%20portrait%20warm%20natural%20light%20soft%20blue%20background%20elegant%20confident%20friendly%20smile%20business%20attire%20high%20quality%20photographic%20studio&width=600&height=700&seq=fk-team1-v2&orientation=portrait" },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: "https://readdy.ai/api/search-image?query=professional%20woman%20financial%20consultant%20portrait%20warm%20light%20soft%20neutral%20background%20elegant%20confident%20welcoming%20smile%20business%20professional%20high%20quality%20photographic%20studio&width=600&height=700&seq=fk-team2-v2&orientation=portrait" },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: "https://readdy.ai/api/search-image?query=professional%20woman%20broker%20advisor%20portrait%20warm%20studio%20light%20soft%20blue%20white%20background%20elegant%20poised%20friendly%20business%20attire%20high%20quality%20photographic&width=600&height=700&seq=fk-team3-v2&orientation=portrait" },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: "https://readdy.ai/api/search-image?query=professional%20woman%20insurance%20specialist%20portrait%20warm%20natural%20light%20soft%20background%20elegant%20approachable%20confident%20smile%20business%20professional%20high%20quality%20photographic%20studio&width=600&height=700&seq=fk-team4-v2&orientation=portrait" },
+  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1573496359142-b8d87734a5a2", 600, 720) },
+  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1580489944761-15a19d654956", 600, 720) },
+  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1438761681033-6461ffad8d80", 600, 720) },
+  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1494790108377-be9c29b29330", 600, 720) },
 ];
 
-export const heroImg = "https://readdy.ai/api/search-image?query=two%20professional%20women%20insurance%20advisor%20client%20meeting%20warm%20office%20natural%20window%20light%20friendly%20conversation%20elegant%20blue%20tones%20cinematic%20high%20quality%20photographic&width=1920&height=1200&seq=fk-hero-v2&orientation=landscape";
+export const heroImg = u("photo-1573497019940-1c28c88b4f3e", 1920, 1200);
+
+export const images = {
+  firmy1: u("photo-1486406146926-c627a92ad1ab"),
+  firmy2: u("photo-1521791136064-7986c2920216"),
+  firmy3: u("photo-1500382017468-9049fed747ef"),
+  firmy4: u("photo-1551288049-bebda4e38f71"),
+  firmy5: u("photo-1589994965851-a8f479c573a9"),
+  firmy6: u("photo-1460925895917-afdab827c52f"),
+  obcanov1: u("photo-1511895426328-dc8714191300"),
+  obcanov2: u("photo-1512917774080-9991f1c4c750"),
+  obcanov3: u("photo-1488646953014-85cb44e25828"),
+  obcanov4: u("photo-1492144534655-ae79c964c9d7"),
+  likvidacia: u("photo-1521737604893-d14cc237f11d", 800, 950),
+  team: u("photo-1573164713988-8665fc963095", 900, 1050),
+};
