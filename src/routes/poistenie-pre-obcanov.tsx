@@ -1,0 +1,152 @@
+import { images } from "@/lib/site-data";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Check, Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
+import { PartnerMarquee } from "@/components/PartnerMarquee";
+
+export const Route = createFileRoute("/poistenie-pre-obcanov")({
+  component: Page,
+  head: () => ({
+    meta: [
+      { title: "Poistenie pre občanov — FinKorekt" },
+      { name: "description", content: "Individuálne a rodinné poistné riešenia pre váš pokojný život." },
+    ],
+  }),
+});
+
+const products = [
+  { icon: Heart, title: "Životné poistenie", desc: "Životné poistenie je základným pilierom finančnej ochrany každej rodiny.", img: images.obcanov1, points: ["Poistenie pre prípad smrti s výplatou poistnej sumy pozostalým", "Krytie trvalých následkov úrazu a invalidity", "Poistenie závažných chorôb (rakovina, infarkt, mozgová príhoda)", "Denné odškodné pri hospitalizácii a pracovnej neschopnosti"] },
+  { icon: Home, title: "Poistenie domov a domácností", desc: "Komplexná ochrana vašej nehnuteľnosti aj zariadenia pred živelnými udalosťami a krádežou.", img: images.obcanov2, points: ["Poistenie nehnuteľnosti vrátane garáže a hospodárskych budov", "Poistenie domácnosti a vybavenia", "Zodpovednosť za škodu spôsobenú v domácnosti", "Asistenčné služby 24/7"] },
+  { icon: Plane, title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny aj storno cesty.", img: images.obcanov3, points: ["Liečebné náklady v zahraničí bez limitu", "Poistenie batožiny a osobných vecí", "Storno zájazdu a prerušenie cesty", "Úraz, zodpovednosť a asistenčné služby"] },
+  { icon: Car, title: "PZP a havarijné poistenie", desc: "Povinné zmluvné poistenie aj havarijné krytie s najlepším pomerom ceny a kvality.", img: images.obcanov4, points: ["PZP s vysokými limitmi krytia", "Havarijné poistenie All Risk", "Krytie čelného skla a živelných udalostí", "Asistenčné služby v SR aj v zahraničí"] },
+];
+
+const benefits = [
+  { title: "Nezávislé poradenstvo", desc: "Nespolupracujeme výhradne s jednou poisťovňou — porovnávame celý trh a odporúčame to, čo je najlepšie pre vás." },
+  { title: "Dôkladná analýza", desc: "Pred každým odporúčaním si dôkladne vypočujeme vaše potreby a životnú situáciu, aby sme navrhli skutočne vhodné riešenie." },
+  { title: "Podpora pri škodách", desc: "V prípade poistnej udalosti vás aktívne zastupujeme voči poisťovni a pomáhame s celým procesom likvidácie." },
+  { title: "Dlhodobá starostlivosť", desc: "Pravidelne prehodnocujeme vaše poistenie a reagujeme na zmeny vo vašom živote — sobáš, dieťa, nová nehnuteľnosť." },
+];
+
+const steps = [
+  { n: "1", title: "Bezplatná konzultácia", desc: "Stretneme sa osobne alebo online a prediskutujeme vaše potreby, riziká a očakávania." },
+  { n: "2", title: "Analýza a porovnanie", desc: "Porovnáme ponuky relevantných poisťovní a pripravíme pre vás prehľadnú analýzu s odporúčaním." },
+  { n: "3", title: "Uzatvorenie zmluvy", desc: "Pomôžeme vám vybrať najlepšie riešenie a postaráme sa o bezproblémové uzatvorenie poistnej zmluvy." },
+  { n: "4", title: "Priebežná správa", desc: "Sledujeme vaše zmluvy, upozorňujeme na dôležité termíny a v prípade škody sme pri vás." },
+];
+
+function Page() {
+  const [active, setActive] = useState(0);
+  const p = products[active];
+  const Icon = p.icon;
+  return (
+    <>
+      <PageHero eyebrow="Osobné poistenie" title="Poistenie pre občanov" subtitle="Individuálne a rodinné poistné riešenia pre váš pokojný život" />
+
+      <section className="py-24 bg-white">
+        <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed">
+          Pomáhame jednotlivcom a rodinám nájsť optimálne poistné krytie. Porovnáme ponuky viacerých poisťovní a odporučíme to najlepšie riešenie — jednoducho, zrozumiteľne a bez skrytých poplatkov.
+        </div>
+      </section>
+
+      <section className="py-20 bg-secondary">
+        <div className="container-fk">
+          <div className="rounded-3xl bg-gradient-to-br from-navy-deep to-navy text-white p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <p className="eyebrow text-blue-soft">Online kalkulačka</p>
+              <h2 className="mt-4 text-3xl md:text-4xl text-white">Kalkulačka PZP</h2>
+              <p className="mt-3 text-white/75 max-w-xl">Vypočítajte si cenu povinného zmluvného poistenia online — rýchlo a bez záväzkov.</p>
+            </div>
+            <a href="#" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors shrink-0">
+              <Calculator size={18} /> Vypočítať PZP
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight size={16} />
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="container-fk text-center">
+          <p className="eyebrow text-blue-bright justify-center mx-auto">Čo ponúkame</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Poistné produkty pre občanov</h2>
+        </div>
+        <div className="container-fk mt-12 flex flex-wrap justify-center gap-3">
+          {products.map((pr, i) => {
+            const PIcon = pr.icon;
+            return (
+              <button
+                key={pr.title}
+                onClick={() => setActive(i)}
+                className={`inline-flex items-center gap-2 h-12 px-5 rounded-full border text-sm font-medium transition-all ${
+                  active === i ? "bg-navy-deep border-navy-deep text-white" : "bg-white border-border text-foreground/70 hover:border-blue-bright/40"
+                }`}
+              >
+                <PIcon size={16} />
+                {pr.title}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="container-fk mt-12 grid gap-10 lg:grid-cols-2 items-center bg-secondary rounded-3xl p-6 md:p-10">
+          <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+            <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+          </div>
+          <div>
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
+              <Icon size={20} />
+            </span>
+            <h3 className="mt-5 text-3xl text-navy-deep">{p.title}</h3>
+            <p className="mt-4 text-muted-foreground leading-relaxed">{p.desc}</p>
+            <ul className="mt-6 space-y-3">
+              {p.points.map((pt) => (
+                <li key={pt} className="flex gap-3">
+                  <Check size={18} className="text-blue-bright mt-0.5 shrink-0" />
+                  <span className="text-foreground/80 text-sm">{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-28 bg-secondary">
+        <div className="container-fk text-center max-w-3xl mx-auto">
+          <p className="eyebrow text-blue-bright justify-center mx-auto">Prečo s nami</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Výhody spolupráce s FinKorekt</h2>
+          <p className="mt-5 text-muted-foreground">Ako nezávislý maklér pracujeme výhradne vo váš prospech — bez viazanosti na konkrétnu poisťovňu.</p>
+        </div>
+        <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((b, i) => (
+            <div key={b.title} className="bg-white rounded-3xl p-8 hover:shadow-lg transition-shadow">
+              <span className="font-serif text-blue-bright text-2xl">0{i + 1}</span>
+              <h3 className="mt-4 text-xl text-navy-deep">{b.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-28 bg-white">
+        <div className="container-fk text-center max-w-2xl mx-auto">
+          <p className="eyebrow text-blue-bright justify-center mx-auto">Ako to funguje</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Jednoducho a bez starostí</h2>
+        </div>
+        <div className="container-fk mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div key={s.n} className="relative">
+              <span className="font-serif text-7xl text-blue-bright/20">{s.n}</span>
+              <h3 className="mt-2 text-xl text-navy-deep">{s.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <PartnerMarquee />
+    </>
+  );
+}
