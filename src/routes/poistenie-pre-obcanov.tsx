@@ -1,3 +1,4 @@
+import { images } from "@/lib/site-data";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";

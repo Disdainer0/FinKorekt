@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { team } from "@/lib/site-data";
+import { team, images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/o-nas")({

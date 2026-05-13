@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock } from "lucide-react";
-import { team, heroImg } from "@/lib/site-data";
+import { team, heroImg, images } from "@/lib/site-data";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 
 export const Route = createFileRoute("/")({
