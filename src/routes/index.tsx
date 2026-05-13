@@ -14,15 +14,15 @@ export const Route = createFileRoute("/")({
 });
 
 const firmy = [
-  { title: "Firemný majetok", desc: "Komplexné krytie budov, strojov a zásob — od požiaru po prerušenie prevádzky.", img: {images.firmy1} },
-  { title: "Zodpovednosť za škodu", desc: "Ochrana firmy pred nárokmi tretích strán a profesijné poistenie zodpovednosti.", img: {images.firmy2} },
-  { title: "Agro poistenie", desc: "Špecializované poistné riešenia pre poľnohospodárov — úroda, zvieratá, technika.", img: {images.firmy3} },
+  { title: "Firemný majetok", desc: "Komplexné krytie budov, strojov a zásob — od požiaru po prerušenie prevádzky.", img: images.firmy1 },
+  { title: "Zodpovednosť za škodu", desc: "Ochrana firmy pred nárokmi tretích strán a profesijné poistenie zodpovednosti.", img: images.firmy2 },
+  { title: "Agro poistenie", desc: "Špecializované poistné riešenia pre poľnohospodárov — úroda, zvieratá, technika.", img: images.firmy3 },
 ];
 
 const obcanov = [
-  { title: "Životné poistenie", desc: "Finančná ochrana pre vás aj vašich blízkych v najťažších životných situáciách.", img: {images.obcanov1} },
-  { title: "Domov a domácnosť", desc: "Spoľahlivé krytie nehnuteľnosti, vybavenia a zodpovednosti v každodennom živote.", img: {images.obcanov2} },
-  { title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny a storno.", img: {images.obcanov3} },
+  { title: "Životné poistenie", desc: "Finančná ochrana pre vás aj vašich blízkych v najťažších životných situáciách.", img: images.obcanov1 },
+  { title: "Domov a domácnosť", desc: "Spoľahlivé krytie nehnuteľnosti, vybavenia a zodpovednosti v každodennom živote.", img: images.obcanov2 },
+  { title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny a storno.", img: images.obcanov3 },
 ];
 
 function Index() {

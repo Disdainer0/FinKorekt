@@ -16,10 +16,10 @@ export const Route = createFileRoute("/poistenie-pre-obcanov")({
 });
 
 const products = [
-  { icon: Heart, title: "Životné poistenie", desc: "Životné poistenie je základným pilierom finančnej ochrany každej rodiny.", img: {images.obcanov1}, points: ["Poistenie pre prípad smrti s výplatou poistnej sumy pozostalým", "Krytie trvalých následkov úrazu a invalidity", "Poistenie závažných chorôb (rakovina, infarkt, mozgová príhoda)", "Denné odškodné pri hospitalizácii a pracovnej neschopnosti"] },
-  { icon: Home, title: "Poistenie domov a domácností", desc: "Komplexná ochrana vašej nehnuteľnosti aj zariadenia pred živelnými udalosťami a krádežou.", img: {images.obcanov2}, points: ["Poistenie nehnuteľnosti vrátane garáže a hospodárskych budov", "Poistenie domácnosti a vybavenia", "Zodpovednosť za škodu spôsobenú v domácnosti", "Asistenčné služby 24/7"] },
-  { icon: Plane, title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny aj storno cesty.", img: {images.obcanov3}, points: ["Liečebné náklady v zahraničí bez limitu", "Poistenie batožiny a osobných vecí", "Storno zájazdu a prerušenie cesty", "Úraz, zodpovednosť a asistenčné služby"] },
-  { icon: Car, title: "PZP a havarijné poistenie", desc: "Povinné zmluvné poistenie aj havarijné krytie s najlepším pomerom ceny a kvality.", img: {images.obcanov4}, points: ["PZP s vysokými limitmi krytia", "Havarijné poistenie All Risk", "Krytie čelného skla a živelných udalostí", "Asistenčné služby v SR aj v zahraničí"] },
+  { icon: Heart, title: "Životné poistenie", desc: "Životné poistenie je základným pilierom finančnej ochrany každej rodiny.", img: images.obcanov1, points: ["Poistenie pre prípad smrti s výplatou poistnej sumy pozostalým", "Krytie trvalých následkov úrazu a invalidity", "Poistenie závažných chorôb (rakovina, infarkt, mozgová príhoda)", "Denné odškodné pri hospitalizácii a pracovnej neschopnosti"] },
+  { icon: Home, title: "Poistenie domov a domácností", desc: "Komplexná ochrana vašej nehnuteľnosti aj zariadenia pred živelnými udalosťami a krádežou.", img: images.obcanov2, points: ["Poistenie nehnuteľnosti vrátane garáže a hospodárskych budov", "Poistenie domácnosti a vybavenia", "Zodpovednosť za škodu spôsobenú v domácnosti", "Asistenčné služby 24/7"] },
+  { icon: Plane, title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny aj storno cesty.", img: images.obcanov3, points: ["Liečebné náklady v zahraničí bez limitu", "Poistenie batožiny a osobných vecí", "Storno zájazdu a prerušenie cesty", "Úraz, zodpovednosť a asistenčné služby"] },
+  { icon: Car, title: "PZP a havarijné poistenie", desc: "Povinné zmluvné poistenie aj havarijné krytie s najlepším pomerom ceny a kvality.", img: images.obcanov4, points: ["PZP s vysokými limitmi krytia", "Havarijné poistenie All Risk", "Krytie čelného skla a živelných udalostí", "Asistenčné služby v SR aj v zahraničí"] },
 ];
 
 const benefits = [
