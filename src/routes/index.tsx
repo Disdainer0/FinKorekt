@@ -14,15 +14,15 @@ export const Route = createFileRoute("/")({
 });
 
 const firmy = [
-  { title: "Firemný majetok", desc: "Komplexné krytie budov, strojov a zásob — od požiaru po prerušenie prevádzky.", img: "https://readdy.ai/api/search-image?query=modern%20glass%20office%20building%20corporate%20architecture%20blue%20sky%20professional%20business%20property%20clean%20minimal%20elegant%20warm%20light%20high%20quality%20architectural%20photography&width=800&height=600&seq=fk-firmy1-v2&orientation=portrait" },
-  { title: "Zodpovednosť za škodu", desc: "Ochrana firmy pred nárokmi tretích strán a profesijné poistenie zodpovednosti.", img: "https://readdy.ai/api/search-image?query=professional%20business%20handshake%20partnership%20trust%20corporate%20meeting%20warm%20light%20soft%20blue%20tones%20elegant%20minimal%20high%20quality%20photographic&width=800&height=600&seq=fk-firmy2-v2&orientation=portrait" },
-  { title: "Agro poistenie", desc: "Špecializované poistné riešenia pre poľnohospodárov — úroda, zvieratá, technika.", img: "https://readdy.ai/api/search-image?query=golden%20wheat%20field%20agricultural%20landscape%20sunrise%20warm%20light%20blue%20sky%20farming%20insurance%20serene%20beautiful%20high%20quality%20photographic&width=800&height=600&seq=fk-firmy3-v2&orientation=portrait" },
+  { title: "Firemný majetok", desc: "Komplexné krytie budov, strojov a zásob — od požiaru po prerušenie prevádzky.", img: {images.firmy1} },
+  { title: "Zodpovednosť za škodu", desc: "Ochrana firmy pred nárokmi tretích strán a profesijné poistenie zodpovednosti.", img: {images.firmy2} },
+  { title: "Agro poistenie", desc: "Špecializované poistné riešenia pre poľnohospodárov — úroda, zvieratá, technika.", img: {images.firmy3} },
 ];
 
 const obcanov = [
-  { title: "Životné poistenie", desc: "Finančná ochrana pre vás aj vašich blízkych v najťažších životných situáciách.", img: "https://readdy.ai/api/search-image?query=warm%20family%20moment%20mother%20daughter%20soft%20natural%20light%20home%20interior%20cozy%20blue%20white%20tones%20life%20insurance%20trust%20care%20high%20quality%20photographic&width=800&height=600&seq=fk-obcanov1-v2&orientation=portrait" },
-  { title: "Domov a domácnosť", desc: "Spoľahlivé krytie nehnuteľnosti, vybavenia a zodpovednosti v každodennom živote.", img: "https://readdy.ai/api/search-image?query=elegant%20modern%20home%20exterior%20architecture%20warm%20sunset%20light%20blue%20sky%20property%20insurance%20minimal%20clean%20high%20quality%20photographic&width=800&height=600&seq=fk-obcanov2-v2&orientation=portrait" },
-  { title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny a storno.", img: "https://readdy.ai/api/search-image?query=travel%20adventure%20suitcase%20passport%20warm%20light%20blue%20sky%20airport%20departure%20travel%20insurance%20minimal%20elegant%20high%20quality%20photographic&width=800&height=600&seq=fk-obcanov3-v2&orientation=portrait" },
+  { title: "Životné poistenie", desc: "Finančná ochrana pre vás aj vašich blízkych v najťažších životných situáciách.", img: {images.obcanov1} },
+  { title: "Domov a domácnosť", desc: "Spoľahlivé krytie nehnuteľnosti, vybavenia a zodpovednosti v každodennom živote.", img: {images.obcanov2} },
+  { title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny a storno.", img: {images.obcanov3} },
 ];
 
 function Index() {
@@ -93,7 +93,7 @@ function Index() {
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center">
           <div className="relative">
             <img
-              src="https://readdy.ai/api/search-image?query=professional%20insurance%20advisor%20woman%20helping%20client%20paperwork%20office%20warm%20light%20blue%20tones%20trust%20care%20elegant%20minimal%20high%20quality%20photographic&width=800&height=700&seq=fk-likvidacia-v2&orientation=portrait"
+              src={images.likvidacia}
               alt="Likvidačný servis"
               className="w-full rounded-3xl object-cover aspect-[5/6]"
             />

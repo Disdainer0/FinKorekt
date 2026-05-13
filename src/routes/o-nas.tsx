@@ -34,7 +34,7 @@ function Page() {
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center">
           <div className="relative">
-            <img src="https://readdy.ai/api/search-image?query=professional%20women%20team%20insurance%20office%20meeting%20warm%20natural%20light%20elegant%20modern%20workspace%20trust%20collaboration%20blue%20tones%20high%20quality%20photographic&width=900&height=700&seq=fk-onas-story&orientation=portrait" alt="" className="rounded-3xl w-full object-cover aspect-[5/6]" />
+            <img src={images.team} alt="" className="rounded-3xl w-full object-cover aspect-[5/6]" />
             <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl border border-border">
               <p className="font-serif text-4xl text-navy-deep">10+</p>
               <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-1">rokov skúseností</p>
