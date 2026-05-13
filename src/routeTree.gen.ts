@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PoisteniePreObcanovRouteImport } from './routes/poistenie-pre-obcanov'
+import { Route as PoisteniePreFirmyRouteImport } from './routes/poistenie-pre-firmy'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PoisteniePreObcanovRoute = PoisteniePreObcanovRouteImport.update({
+  id: '/poistenie-pre-obcanov',
+  path: '/poistenie-pre-obcanov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoisteniePreFirmyRoute = PoisteniePreFirmyRouteImport.update({
+  id: '/poistenie-pre-firmy',
+  path: '/poistenie-pre-firmy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,88 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/poistenie-pre-firmy': typeof PoisteniePreFirmyRoute
+  '/poistenie-pre-obcanov': typeof PoisteniePreObcanovRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/poistenie-pre-firmy': typeof PoisteniePreFirmyRoute
+  '/poistenie-pre-obcanov': typeof PoisteniePreObcanovRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/o-nas': typeof ONasRoute
+  '/poistenie-pre-firmy': typeof PoisteniePreFirmyRoute
+  '/poistenie-pre-obcanov': typeof PoisteniePreObcanovRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/poistenie-pre-firmy'
+    | '/poistenie-pre-obcanov'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/poistenie-pre-firmy'
+    | '/poistenie-pre-obcanov'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/poistenie-pre-firmy'
+    | '/poistenie-pre-obcanov'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontaktRoute: typeof KontaktRoute
+  ONasRoute: typeof ONasRoute
+  PoisteniePreFirmyRoute: typeof PoisteniePreFirmyRoute
+  PoisteniePreObcanovRoute: typeof PoisteniePreObcanovRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/poistenie-pre-obcanov': {
+      id: '/poistenie-pre-obcanov'
+      path: '/poistenie-pre-obcanov'
+      fullPath: '/poistenie-pre-obcanov'
+      preLoaderRoute: typeof PoisteniePreObcanovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poistenie-pre-firmy': {
+      id: '/poistenie-pre-firmy'
+      path: '/poistenie-pre-firmy'
+      fullPath: '/poistenie-pre-firmy'
+      preLoaderRoute: typeof PoisteniePreFirmyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +137,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontaktRoute: KontaktRoute,
+  ONasRoute: ONasRoute,
+  PoisteniePreFirmyRoute: PoisteniePreFirmyRoute,
+  PoisteniePreObcanovRoute: PoisteniePreObcanovRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
