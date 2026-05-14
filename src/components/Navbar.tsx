@@ -15,6 +15,7 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("fk-lang") || "EN" : "EN"));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -25,6 +26,7 @@ export function Navbar() {
 
   const onDark = isHome && !scrolled;
   const textCls = onDark ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-foreground";
+  const activeColor = onDark ? "text-white" : "text-blue-bright";
 
   return (
     <header
@@ -41,17 +43,25 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               className={`text-sm font-medium transition-colors ${textCls}`}
-              activeProps={{ className: "text-blue-bright" }}
+              activeProps={{ className: `${textCls} ${activeColor}` }}
             >
               {l.label}
             </Link>
           ))}
           <button
+            onClick={() => {
+              const next = lang === "EN" ? "SK" : "EN";
+              setLang(next);
+              try {
+                localStorage.setItem("fk-lang", next);
+              } catch {}
+              if (typeof document !== "undefined") document.documentElement.lang = next.toLowerCase();
+            }}
             className={`h-10 px-5 rounded-full border text-xs font-semibold tracking-wider transition-colors ${
               onDark ? "border-white/40 text-white hover:bg-white/10" : "border-foreground/20 text-foreground hover:bg-accent"
             }`}
           >
-            EN
+            {lang}
           </button>
         </nav>
 
