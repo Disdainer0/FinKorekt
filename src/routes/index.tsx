@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock } from "lucide-react";
-import { team, heroImg, images } from "@/lib/site-data";
+import { team, images } from "@/lib/site-data";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { useI18n, usePageMeta } from "@/lib/i18n";
+import LongLogo from "@/IMG/LongLogo.svg";
+import RespectLogo from "@/IMG/RespectLogo.svg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -28,15 +30,13 @@ function Index() {
     <>
       <section className="relative min-h-screen flex items-center text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-navy-deep" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,oklch(0.55_0.17_255),transparent_62%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
         </div>
         <div className="container-fk relative pt-32 pb-24 animate-fade-up">
-          <p className="eyebrow text-blue-soft">{t("home.hero.eyebrow")}</p>
-          <h1 className="mt-8 font-serif font-medium text-7xl md:text-[8.5rem] leading-[0.95] tracking-tight">
-            Fin<span className="text-blue-soft">Korekt</span>
-          </h1>
+          <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+          <img src={LongLogo} alt="FinKorekt" className="mt-8 h-16 md:h-24 w-auto object-contain" />
           <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{t("home.hero.description")}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link to="/poistenie-pre-firmy" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors">

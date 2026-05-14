@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
+import RespectLogo from "@/IMG/RespectLogo.svg";
+import ShortLogo from "@/IMG/ShortLogo.svg";
 
 export const Route = createFileRoute("/kontakt")({
   component: Page,
@@ -45,8 +47,8 @@ function Page() {
           <div className="bg-navy-deep text-white rounded-3xl p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden">
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.65_0.18_255),transparent_60%)]" />
             <div className="relative">
-              <p className="eyebrow text-blue-soft">FinKorekt</p>
-              <h3 className="mt-4 font-serif text-3xl">{t("contact.info.title")}</h3>
+              <img src={ShortLogo} alt="FinKorekt" className="h-6 w-auto object-contain" />
+              <img src={RespectLogo} alt="Respect" className="mt-4 h-8 w-auto object-contain" />
               <p className="mt-4 text-white/70">{t("contact.info.subtitle")}</p>
             </div>
             <a

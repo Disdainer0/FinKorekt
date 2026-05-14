@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/lib/i18n";
+import RespectLogo from "@/IMG/RespectLogo.svg";
+import LongLogo from "@/IMG/LongLogo.svg";
 
 export function Footer() {
   const { t } = useI18n();
@@ -36,8 +38,12 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-fk py-6 flex flex-col md:flex-row gap-2 items-center justify-between text-xs text-white/50">
-          <span>© {new Date().getFullYear()} FinKorekt. {t("footer.copyright")}</span>
-          <span>{t("footer.partner")}</span>
+          <span className="inline-flex items-center gap-3">
+            <span>© {new Date().getFullYear()}</span>
+            <img src={LongLogo} alt="FinKorekt" className="h-4 w-auto object-contain" />
+            <span>{t("footer.copyright")}</span>
+          </span>
+          <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
         </div>
       </div>
     </footer>
