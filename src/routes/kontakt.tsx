@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/kontakt")({
   component: Page,
@@ -20,9 +21,10 @@ const items = [
 ];
 
 function Page() {
+  const { t } = useI18n();
   return (
     <>
-      <PageHero eyebrow="FinKorekt" title="Kontakt" subtitle="Sme tu pre vás — neváhajte nás kontaktovať." />
+      <PageHero eyebrow="FinKorekt" title={t("nav.contact")} subtitle={t("error.message") /* reuse generic subtitle */} />
 
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-12 lg:grid-cols-2">

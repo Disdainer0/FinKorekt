@@ -2,12 +2,13 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { useI18n } from "@/lib/i18n";
 
 const links = [
-  { to: "/o-nas", label: "O nás" },
-  { to: "/poistenie-pre-firmy", label: "Poistenie pre firmy" },
-  { to: "/poistenie-pre-obcanov", label: "Poistenie pre občanov" },
-  { to: "/kontakt", label: "Kontakt" },
+  { to: "/o-nas", key: "nav.about" },
+  { to: "/poistenie-pre-firmy", key: "nav.forBusinesses" },
+  { to: "/poistenie-pre-obcanov", key: "nav.forIndividuals" },
+  { to: "/kontakt", key: "nav.contact" },
 ] as const;
 
 export function Navbar() {
@@ -15,7 +16,7 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("fk-lang") || "EN" : "EN"));
+  const { lang, setLang, t } = useI18n();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -45,17 +46,13 @@ export function Navbar() {
               className={`text-sm font-medium transition-colors ${textCls}`}
               activeProps={{ className: `${textCls} ${activeColor}` }}
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
           <button
             onClick={() => {
               const next = lang === "EN" ? "SK" : "EN";
-              setLang(next);
-              try {
-                localStorage.setItem("fk-lang", next);
-              } catch {}
-              if (typeof document !== "undefined") document.documentElement.lang = next.toLowerCase();
+              setLang(next as any);
             }}
             className={`h-10 px-5 rounded-full border text-xs font-semibold tracking-wider transition-colors ${
               onDark ? "border-white/40 text-white hover:bg-white/10" : "border-foreground/20 text-foreground hover:bg-accent"

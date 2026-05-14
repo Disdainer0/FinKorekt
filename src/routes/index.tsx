@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { team, heroImg, images } from "@/lib/site-data";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -26,6 +27,7 @@ const obcanov = [
 ];
 
 function Index() {
+  const { t } = useI18n();
   return (
     <>
       {/* HERO */}
@@ -40,15 +42,13 @@ function Index() {
           <h1 className="mt-8 font-serif font-medium text-7xl md:text-[8.5rem] leading-[0.95] tracking-tight">
             Fin<span className="text-blue-soft">Korekt</span>
           </h1>
-          <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">
-            Nezávislé poistné poradenstvo s ľudským prístupom. Sme tu, aby sme vám pomohli nájsť to správne krytie — pre vás, vašu rodinu aj vaše podnikanie.
-          </p>
+          <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{t("root.description")}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               to="/poistenie-pre-firmy"
               className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors"
             >
-              Poistenie pre firmy
+              {t("nav.forBusinesses")}
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-0.5 transition-transform">
                 <ArrowRight size={16} />
               </span>
@@ -57,7 +57,7 @@ function Index() {
               to="/poistenie-pre-obcanov"
               className="inline-flex items-center h-14 px-7 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors"
             >
-              Poistenie pre občanov
+              {t("nav.forIndividuals")}
             </Link>
           </div>
         </div>
@@ -71,19 +71,19 @@ function Index() {
 
       {/* FIRMY */}
       <ProductSection
-        eyebrow="Firemné poistné riešenia"
-        title="Poistenie pre firmy"
+        eyebrow={t("nav.forBusinesses")}
+        title={t("nav.forBusinesses")}
         ctaTo="/poistenie-pre-firmy"
-        ctaLabel="Všetky produkty pre firmy"
+        ctaLabel={t("nav.forBusinesses")}
         items={firmy}
       />
 
       {/* OBCANOV */}
       <ProductSection
-        eyebrow="Individuálne a rodinné poistenie"
-        title="Poistenie pre občanov"
+        eyebrow={t("nav.forIndividuals")}
+        title={t("nav.forIndividuals")}
         ctaTo="/poistenie-pre-obcanov"
-        ctaLabel="Všetky produkty pre občanov"
+        ctaLabel={t("nav.forIndividuals")}
         items={obcanov}
         alt
       />

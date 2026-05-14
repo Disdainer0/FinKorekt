@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { team, images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/o-nas")({
   component: Page,
@@ -27,9 +28,10 @@ const values = [
 ];
 
 function Page() {
+  const { t } = useI18n();
   return (
     <>
-      <PageHero eyebrow="Náš príbeh" title="O nás" subtitle="Sme FinKorekt — váš spoľahlivý poistný partner s ľudskou tvárou." />
+      <PageHero eyebrow={t("nav.about")} title={t("nav.about")} subtitle={t("root.description")} />
 
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center">

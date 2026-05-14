@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
+import { useI18n } from "@/lib/i18n";
 
 export function Footer() {
+  const { t } = useI18n();
   return (
     <footer className="bg-navy-deep text-white/80">
       <div className="container-fk py-20 grid gap-12 md:grid-cols-3">
         <div>
           <Logo light />
-          <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">
-            Nezávislé poistné poradenstvo s ľudským prístupom. Partner of Respect Slovakia.
-          </p>
+          <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">{t("footer.description")}</p>
           <ul className="mt-8 space-y-3 text-sm">
             <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>[ADDRESS]</span></li>
             <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href="tel:[PHONE]">[PHONE]</a></li>
@@ -19,24 +19,24 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">Menu</h4>
+          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">{t("nav.menu")}</h4>
           <ul className="mt-6 space-y-3 text-sm">
-            <li><Link to="/o-nas" className="hover:text-white">O nás</Link></li>
-            <li><Link to="/poistenie-pre-firmy" className="hover:text-white">Poistenie pre firmy</Link></li>
-            <li><Link to="/poistenie-pre-obcanov" className="hover:text-white">Poistenie pre občanov</Link></li>
-            <li><Link to="/kontakt" className="hover:text-white">Kontakt</Link></li>
+            <li><Link to="/o-nas" className="hover:text-white">{t("nav.about")}</Link></li>
+            <li><Link to="/poistenie-pre-firmy" className="hover:text-white">{t("nav.forBusinesses")}</Link></li>
+            <li><Link to="/poistenie-pre-obcanov" className="hover:text-white">{t("nav.forIndividuals")}</Link></li>
+            <li><Link to="/kontakt" className="hover:text-white">{t("nav.contact")}</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">Pracovné hodiny</h4>
-          <p className="mt-6 text-sm">Po – Pia: 8:00 – 17:00</p>
+          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">{t("footer.hours")}</h4>
+          <p className="mt-6 text-sm">{t("footer.hours")}</p>
         </div>
       </div>
 
       <div className="border-t border-white/10">
         <div className="container-fk py-6 flex flex-col md:flex-row gap-2 items-center justify-between text-xs text-white/50">
-          <span>© {new Date().getFullYear()} FinKorekt. Všetky práva vyhradené.</span>
+          <span>© {new Date().getFullYear()} FinKorekt. {t("footer.copyright")}</span>
           <span>Partner of Respect Slovakia</span>
         </div>
       </div>
