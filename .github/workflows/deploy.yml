@@ -33,20 +33,31 @@ jobs:
 
       - name: Detect build output directory
         run: |
-          if [[ -f dist/index.html ]]; then
+          if [[ -d dist ]]; then
             echo "BUILD_DIR=dist" >> "$GITHUB_ENV"
-          elif [[ -f .output/public/index.html ]]; then
+          elif [[ -d .output/public ]]; then
             echo "BUILD_DIR=.output/public" >> "$GITHUB_ENV"
-          elif [[ -f .output/client/index.html ]]; then
+          elif [[ -d .output/client ]]; then
             echo "BUILD_DIR=.output/client" >> "$GITHUB_ENV"
           else
-            echo "Could not find build output with index.html"
-            find . -maxdepth 4 -name index.html | cat
+            echo "Could not find known build output directory"
+            find . -maxdepth 4 -type d \( -name dist -o -name .output -o -name .vinxi \) | cat
             exit 1
           fi
 
-      - name: Add SPA fallback for deep links
-        run: cp "$BUILD_DIR/index.html" "$BUILD_DIR/404.html"
+      - name: Prepare static entrypoints for Pages
+        run: |
+          if [[ -f "$BUILD_DIR/index.html" ]]; then
+            true
+          elif [[ -f "$BUILD_DIR/_shell.html" ]]; then
+            cp "$BUILD_DIR/_shell.html" "$BUILD_DIR/index.html"
+          else
+            echo "No index.html or _shell.html in $BUILD_DIR"
+            find "$BUILD_DIR" -maxdepth 3 -name "*.html" | cat
+            exit 1
+          fi
+
+          cp "$BUILD_DIR/index.html" "$BUILD_DIR/404.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
