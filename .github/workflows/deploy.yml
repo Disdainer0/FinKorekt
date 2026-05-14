@@ -31,13 +31,27 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Detect build output directory
+        run: |
+          if [[ -f dist/index.html ]]; then
+            echo "BUILD_DIR=dist" >> "$GITHUB_ENV"
+          elif [[ -f .output/public/index.html ]]; then
+            echo "BUILD_DIR=.output/public" >> "$GITHUB_ENV"
+          elif [[ -f .output/client/index.html ]]; then
+            echo "BUILD_DIR=.output/client" >> "$GITHUB_ENV"
+          else
+            echo "Could not find build output with index.html"
+            find . -maxdepth 4 -name index.html | cat
+            exit 1
+          fi
+
       - name: Add SPA fallback for deep links
-        run: cp dist/index.html dist/404.html
+        run: cp "$BUILD_DIR/index.html" "$BUILD_DIR/404.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ${{ env.BUILD_DIR }}
 
   deploy:
     needs: build
