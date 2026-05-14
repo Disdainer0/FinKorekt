@@ -2,35 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { team, heroImg, images } from "@/lib/site-data";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "FinKorekt — Nezávislé poistné poradenstvo" },
-      { name: "description", content: "Nezávislé poistné poradenstvo s ľudským prístupom. Pre vás, vašu rodinu aj vaše podnikanie." },
-    ],
-  }),
 });
-
-const firmy = [
-  { title: "Firemný majetok", desc: "Komplexné krytie budov, strojov a zásob — od požiaru po prerušenie prevádzky.", img: images.firmy1 },
-  { title: "Zodpovednosť za škodu", desc: "Ochrana firmy pred nárokmi tretích strán a profesijné poistenie zodpovednosti.", img: images.firmy2 },
-  { title: "Agro poistenie", desc: "Špecializované poistné riešenia pre poľnohospodárov — úroda, zvieratá, technika.", img: images.firmy3 },
-];
-
-const obcanov = [
-  { title: "Životné poistenie", desc: "Finančná ochrana pre vás aj vašich blízkych v najťažších životných situáciách.", img: images.obcanov1 },
-  { title: "Domov a domácnosť", desc: "Spoľahlivé krytie nehnuteľnosti, vybavenia a zodpovednosti v každodennom živote.", img: images.obcanov2 },
-  { title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny a storno.", img: images.obcanov3 },
-];
 
 function Index() {
   const { t } = useI18n();
+  usePageMeta("root.title", "root.description");
+
+  const firmy = [
+    { title: t("home.businesses.item1.title"), desc: t("home.businesses.item1.desc"), img: images.firmy1 },
+    { title: t("home.businesses.item2.title"), desc: t("home.businesses.item2.desc"), img: images.firmy2 },
+    { title: t("home.businesses.item3.title"), desc: t("home.businesses.item3.desc"), img: images.firmy3 },
+  ];
+
+  const obcanov = [
+    { title: t("home.individuals.item1.title"), desc: t("home.individuals.item1.desc"), img: images.obcanov1 },
+    { title: t("home.individuals.item2.title"), desc: t("home.individuals.item2.desc"), img: images.obcanov2 },
+    { title: t("home.individuals.item3.title"), desc: t("home.individuals.item3.desc"), img: images.obcanov3 },
+  ];
+
   return (
     <>
-      {/* HERO */}
       <section className="relative min-h-screen flex items-center text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="" className="h-full w-full object-cover" />
@@ -38,26 +33,20 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent" />
         </div>
         <div className="container-fk relative pt-32 pb-24 animate-fade-up">
-          <p className="eyebrow text-blue-soft">Partner of Respect</p>
+          <p className="eyebrow text-blue-soft">{t("home.hero.eyebrow")}</p>
           <h1 className="mt-8 font-serif font-medium text-7xl md:text-[8.5rem] leading-[0.95] tracking-tight">
             Fin<span className="text-blue-soft">Korekt</span>
           </h1>
-          <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{t("root.description")}</p>
+          <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{t("home.hero.description")}</p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              to="/poistenie-pre-firmy"
-              className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors"
-            >
-              {t("nav.forBusinesses")}
+            <Link to="/poistenie-pre-firmy" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors">
+              {t("home.cta.businesses")}
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-0.5 transition-transform">
                 <ArrowRight size={16} />
               </span>
             </Link>
-            <Link
-              to="/poistenie-pre-obcanov"
-              className="inline-flex items-center h-14 px-7 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors"
-            >
-              {t("nav.forIndividuals")}
+            <Link to="/poistenie-pre-obcanov" className="inline-flex items-center h-14 px-7 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors">
+              {t("home.cta.individuals")}
             </Link>
           </div>
         </div>
@@ -65,62 +54,49 @@ function Index() {
           <span className="h-10 w-px bg-white/30 relative overflow-hidden">
             <span className="absolute inset-x-0 top-0 h-3 bg-white animate-scroll-dot" />
           </span>
-          Scroll
+          {t("home.scroll")}
         </div>
       </section>
 
-      {/* FIRMY */}
       <ProductSection
-        eyebrow={t("nav.forBusinesses")}
-        title={t("nav.forBusinesses")}
+        eyebrow={t("home.businesses.eyebrow")}
+        title={t("home.businesses.title")}
         ctaTo="/poistenie-pre-firmy"
-        ctaLabel={t("nav.forBusinesses")}
+        ctaLabel={t("home.businesses.cta")}
         items={firmy}
       />
 
-      {/* OBCANOV */}
       <ProductSection
-        eyebrow={t("nav.forIndividuals")}
-        title={t("nav.forIndividuals")}
+        eyebrow={t("home.individuals.eyebrow")}
+        title={t("home.individuals.title")}
         ctaTo="/poistenie-pre-obcanov"
-        ctaLabel={t("nav.forIndividuals")}
+        ctaLabel={t("home.individuals.cta")}
         items={obcanov}
         alt
       />
 
-      {/* LIKVIDACNY SERVIS */}
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center">
           <div className="relative">
-            <img
-              src={images.likvidacia}
-              alt="Likvidačný servis"
-              className="w-full rounded-3xl object-cover aspect-[5/6]"
-            />
+            <img src={images.likvidacia} alt={t("home.claims.title")} className="w-full rounded-3xl object-cover aspect-[5/6]" />
             <div className="absolute -bottom-6 -right-6 md:bottom-8 md:right-8 bg-white rounded-2xl shadow-2xl p-6 max-w-[220px] border border-border">
               <Clock className="text-blue-bright" size={24} />
-              <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">Dostupnosť</p>
+              <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">{t("home.availability")}</p>
               <p className="mt-1 font-serif text-3xl text-navy-deep">24 / 7</p>
-              <p className="text-sm text-muted-foreground">Likvidačný servis</p>
+              <p className="text-sm text-muted-foreground">{t("home.claims.title")}</p>
             </div>
           </div>
           <div>
-            <p className="eyebrow text-blue-bright">Riešenie poistných udalostí</p>
-            <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Likvidačný servis</h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-              Efektívny a pružný systém likvidácie poistných udalostí je kľúčovou súčasťou kvalitného poistenia. Maximalizujeme spokojnosť klientov tým, že zjednodušujeme celý proces a stojíme pri vás v každom kroku.
-            </p>
+            <p className="eyebrow text-blue-bright">{t("home.claims.eyebrow")}</p>
+            <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("home.claims.title")}</h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">{t("home.claims.description")}</p>
             <ul className="mt-8 space-y-5">
-              {[
-                "Flexibilný likvidačný servis dostupný 24 hodín denne, s odborníkmi s dlhoročnou praxou v oblasti poistenia.",
-                "Individuálny prístup ku každému klientovi a aktívna komunikácia s poisťovňami v jeho mene.",
-                "Pri poistnej udalosti zachovajte chladnú hlavu — sme na vašej strane a postaráme sa o všetko.",
-              ].map((t) => (
-                <li key={t} className="flex gap-4">
+              {[t("home.claims.point1"), t("home.claims.point2"), t("home.claims.point3")].map((item) => (
+                <li key={item} className="flex gap-4">
                   <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
                     <Check size={14} />
                   </span>
-                  <span className="text-foreground/80">{t}</span>
+                  <span className="text-foreground/80">{item}</span>
                 </li>
               ))}
             </ul>
@@ -128,11 +104,10 @@ function Index() {
         </div>
       </section>
 
-      {/* TIM */}
       <section className="py-28 bg-secondary">
         <div className="container-fk text-center">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Sme tu pre vás</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("home.team.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("home.team.title")}</h2>
         </div>
         <div className="container-fk mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m, i) => (
@@ -174,10 +149,7 @@ function ProductSection({
           <p className="eyebrow text-blue-bright">{eyebrow}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{title}</h2>
         </div>
-        <Link
-          to={ctaTo}
-          className="inline-flex items-center gap-2 text-sm font-medium text-navy-deep hover:text-blue-bright group"
-        >
+        <Link to={ctaTo} className="inline-flex items-center gap-2 text-sm font-medium text-navy-deep hover:text-blue-bright group">
           {ctaLabel}
           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </Link>

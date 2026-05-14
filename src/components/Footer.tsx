@@ -37,7 +37,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-fk py-6 flex flex-col md:flex-row gap-2 items-center justify-between text-xs text-white/50">
           <span>© {new Date().getFullYear()} FinKorekt. {t("footer.copyright")}</span>
-          <span>Partner of Respect Slovakia</span>
+          <span>{t("footer.partner")}</span>
         </div>
       </div>
     </footer>

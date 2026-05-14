@@ -1,52 +1,77 @@
-import { images } from "@/lib/site-data";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";
+import { images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 import { PartnerMarquee } from "@/components/PartnerMarquee";
+import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/poistenie-pre-obcanov")({
   component: Page,
-  head: () => ({
-    meta: [
-      { title: "Poistenie pre občanov — FinKorekt" },
-      { name: "description", content: "Individuálne a rodinné poistné riešenia pre váš pokojný život." },
-    ],
-  }),
 });
 
-const products = [
-  { icon: Heart, title: "Životné poistenie", desc: "Životné poistenie je základným pilierom finančnej ochrany každej rodiny.", img: images.obcanov1, points: ["Poistenie pre prípad smrti s výplatou poistnej sumy pozostalým", "Krytie trvalých následkov úrazu a invalidity", "Poistenie závažných chorôb (rakovina, infarkt, mozgová príhoda)", "Denné odškodné pri hospitalizácii a pracovnej neschopnosti"] },
-  { icon: Home, title: "Poistenie domov a domácností", desc: "Komplexná ochrana vašej nehnuteľnosti aj zariadenia pred živelnými udalosťami a krádežou.", img: images.obcanov2, points: ["Poistenie nehnuteľnosti vrátane garáže a hospodárskych budov", "Poistenie domácnosti a vybavenia", "Zodpovednosť za škodu spôsobenú v domácnosti", "Asistenčné služby 24/7"] },
-  { icon: Plane, title: "Cestovné poistenie", desc: "Pokojné cestovanie s krytím liečebných nákladov, batožiny aj storno cesty.", img: images.obcanov3, points: ["Liečebné náklady v zahraničí bez limitu", "Poistenie batožiny a osobných vecí", "Storno zájazdu a prerušenie cesty", "Úraz, zodpovednosť a asistenčné služby"] },
-  { icon: Car, title: "PZP a havarijné poistenie", desc: "Povinné zmluvné poistenie aj havarijné krytie s najlepším pomerom ceny a kvality.", img: images.obcanov4, points: ["PZP s vysokými limitmi krytia", "Havarijné poistenie All Risk", "Krytie čelného skla a živelných udalostí", "Asistenčné služby v SR aj v zahraničí"] },
-];
+type TFn = (key: string) => string;
 
-const benefits = [
-  { title: "Nezávislé poradenstvo", desc: "Nespolupracujeme výhradne s jednou poisťovňou — porovnávame celý trh a odporúčame to, čo je najlepšie pre vás." },
-  { title: "Dôkladná analýza", desc: "Pred každým odporúčaním si dôkladne vypočujeme vaše potreby a životnú situáciu, aby sme navrhli skutočne vhodné riešenie." },
-  { title: "Podpora pri škodách", desc: "V prípade poistnej udalosti vás aktívne zastupujeme voči poisťovni a pomáhame s celým procesom likvidácie." },
-  { title: "Dlhodobá starostlivosť", desc: "Pravidelne prehodnocujeme vaše poistenie a reagujeme na zmeny vo vašom živote — sobáš, dieťa, nová nehnuteľnosť." },
-];
-
-const steps = [
-  { n: "1", title: "Bezplatná konzultácia", desc: "Stretneme sa osobne alebo online a prediskutujeme vaše potreby, riziká a očakávania." },
-  { n: "2", title: "Analýza a porovnanie", desc: "Porovnáme ponuky relevantných poisťovní a pripravíme pre vás prehľadnú analýzu s odporúčaním." },
-  { n: "3", title: "Uzatvorenie zmluvy", desc: "Pomôžeme vám vybrať najlepšie riešenie a postaráme sa o bezproblémové uzatvorenie poistnej zmluvy." },
-  { n: "4", title: "Priebežná správa", desc: "Sledujeme vaše zmluvy, upozorňujeme na dôležité termíny a v prípade škody sme pri vás." },
-];
+function products(t: TFn) {
+  return [
+    {
+      icon: Heart,
+      title: t("individual.products.life.title"),
+      desc: t("individual.products.life.desc"),
+      img: images.obcanov1,
+      points: [t("individual.products.life.p1"), t("individual.products.life.p2"), t("individual.products.life.p3"), t("individual.products.life.p4")],
+    },
+    {
+      icon: Home,
+      title: t("individual.products.home.title"),
+      desc: t("individual.products.home.desc"),
+      img: images.obcanov2,
+      points: [t("individual.products.home.p1"), t("individual.products.home.p2"), t("individual.products.home.p3"), t("individual.products.home.p4")],
+    },
+    {
+      icon: Plane,
+      title: t("individual.products.travel.title"),
+      desc: t("individual.products.travel.desc"),
+      img: images.obcanov3,
+      points: [t("individual.products.travel.p1"), t("individual.products.travel.p2"), t("individual.products.travel.p3"), t("individual.products.travel.p4")],
+    },
+    {
+      icon: Car,
+      title: t("individual.products.car.title"),
+      desc: t("individual.products.car.desc"),
+      img: images.obcanov4,
+      points: [t("individual.products.car.p1"), t("individual.products.car.p2"), t("individual.products.car.p3"), t("individual.products.car.p4")],
+    },
+  ];
+}
 
 function Page() {
+  const { t } = useI18n();
+  usePageMeta("individual.hero.title", "individual.hero.subtitle");
   const [active, setActive] = useState(0);
-  const p = products[active];
+  const items = products(t);
+  const p = items[active];
   const Icon = p.icon;
+  const benefits = [
+    { title: t("individual.benefits.b1.title"), desc: t("individual.benefits.b1.desc") },
+    { title: t("individual.benefits.b2.title"), desc: t("individual.benefits.b2.desc") },
+    { title: t("individual.benefits.b3.title"), desc: t("individual.benefits.b3.desc") },
+    { title: t("individual.benefits.b4.title"), desc: t("individual.benefits.b4.desc") },
+  ];
+  const steps = [
+    { n: "1", title: t("individual.steps.s1.title"), desc: t("individual.steps.s1.desc") },
+    { n: "2", title: t("individual.steps.s2.title"), desc: t("individual.steps.s2.desc") },
+    { n: "3", title: t("individual.steps.s3.title"), desc: t("individual.steps.s3.desc") },
+    { n: "4", title: t("individual.steps.s4.title"), desc: t("individual.steps.s4.desc") },
+  ];
+
   return (
     <>
-      <PageHero eyebrow="Osobné poistenie" title="Poistenie pre občanov" subtitle="Individuálne a rodinné poistné riešenia pre váš pokojný život" />
+      <PageHero eyebrow={t("individual.hero.eyebrow")} title={t("individual.hero.title")} subtitle={t("individual.hero.subtitle")} />
 
       <section className="py-24 bg-white">
         <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed">
-          Pomáhame jednotlivcom a rodinám nájsť optimálne poistné krytie. Porovnáme ponuky viacerých poisťovní a odporučíme to najlepšie riešenie — jednoducho, zrozumiteľne a bez skrytých poplatkov.
+          {t("individual.intro")}
         </div>
       </section>
 
@@ -54,12 +79,12 @@ function Page() {
         <div className="container-fk">
           <div className="rounded-3xl bg-gradient-to-br from-navy-deep to-navy text-white p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
-              <p className="eyebrow text-blue-soft">Online kalkulačka</p>
-              <h2 className="mt-4 text-3xl md:text-4xl text-white">Kalkulačka PZP</h2>
-              <p className="mt-3 text-white/75 max-w-xl">Vypočítajte si cenu povinného zmluvného poistenia online — rýchlo a bez záväzkov.</p>
+              <p className="eyebrow text-blue-soft">{t("individual.calculator.eyebrow")}</p>
+              <h2 className="mt-4 text-3xl md:text-4xl text-white">{t("individual.calculator.title")}</h2>
+              <p className="mt-3 text-white/75 max-w-xl">{t("individual.calculator.subtitle")}</p>
             </div>
             <a href="#" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors shrink-0">
-              <Calculator size={18} /> Vypočítať PZP
+              <Calculator size={18} /> {t("individual.calculator.button")}
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-0.5 transition-transform">
                 <ArrowRight size={16} />
               </span>
@@ -70,11 +95,11 @@ function Page() {
 
       <section className="py-24 bg-white">
         <div className="container-fk text-center">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Čo ponúkame</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Poistné produkty pre občanov</h2>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("individual.products.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("individual.products.title")}</h2>
         </div>
         <div className="container-fk mt-12 flex flex-wrap justify-center gap-3">
-          {products.map((pr, i) => {
+          {items.map((pr, i) => {
             const PIcon = pr.icon;
             return (
               <button
@@ -115,9 +140,9 @@ function Page() {
 
       <section className="py-28 bg-secondary">
         <div className="container-fk text-center max-w-3xl mx-auto">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Prečo s nami</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Výhody spolupráce s FinKorekt</h2>
-          <p className="mt-5 text-muted-foreground">Ako nezávislý maklér pracujeme výhradne vo váš prospech — bez viazanosti na konkrétnu poisťovňu.</p>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("individual.benefits.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("individual.benefits.title")}</h2>
+          <p className="mt-5 text-muted-foreground">{t("individual.benefits.subtitle")}</p>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b, i) => (
@@ -132,8 +157,8 @@ function Page() {
 
       <section className="py-28 bg-white">
         <div className="container-fk text-center max-w-2xl mx-auto">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Ako to funguje</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Jednoducho a bez starostí</h2>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("individual.steps.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("individual.steps.title")}</h2>
         </div>
         <div className="container-fk mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (

@@ -52,7 +52,7 @@ export function Navbar() {
           <button
             onClick={() => {
               const next = lang === "EN" ? "SK" : "EN";
-              setLang(next as any);
+              setLang(next);
             }}
             className={`h-10 px-5 rounded-full border text-xs font-semibold tracking-wider transition-colors ${
               onDark ? "border-white/40 text-white hover:bg-white/10" : "border-foreground/20 text-foreground hover:bg-accent"
@@ -65,7 +65,7 @@ export function Navbar() {
         <button
           className={`lg:hidden p-2 ${onDark ? "text-white" : "text-foreground"}`}
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={t("nav.menu")}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -81,7 +81,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="text-foreground/80 text-base font-medium py-2"
               >
-                {l.label}
+                {t(l.key)}
               </Link>
             ))}
           </nav>

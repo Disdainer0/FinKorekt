@@ -1,12 +1,14 @@
 import { partners } from "@/lib/site-data";
+import { useI18n } from "@/lib/i18n";
 
 export function PartnerMarquee() {
+  const { t } = useI18n();
   const items = [...partners, ...partners, ...partners];
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container-fk text-center">
-        <p className="eyebrow text-blue-bright justify-center mx-auto">s poprednými poisťovňami</p>
-        <h2 className="mt-4 text-4xl md:text-5xl font-serif text-navy-deep">Spolupracujeme</h2>
+        <p className="eyebrow text-blue-bright justify-center mx-auto">{t("partner.eyebrow")}</p>
+        <h2 className="mt-4 text-4xl md:text-5xl font-serif text-navy-deep">{t("partner.title")}</h2>
       </div>
       <div className="mt-16 relative">
         <div className="flex gap-20 animate-marquee w-max">

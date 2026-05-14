@@ -1,30 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/kontakt")({
   component: Page,
-  head: () => ({
-    meta: [
-      { title: "Kontakt — FinKorekt" },
-      { name: "description", content: "Sme tu pre vás — neváhajte nás kontaktovať." },
-    ],
-  }),
 });
-
-const items = [
-  { icon: MapPin, label: "Adresa", value: "[ADDRESS]" },
-  { icon: Phone, label: "Telefón", value: "[PHONE]", href: "tel:[PHONE]" },
-  { icon: Mail, label: "E-mail", value: "[EMAIL]", href: "mailto:[EMAIL]" },
-  { icon: Clock, label: "Pracovné hodiny", value: "Po – Pia: 8:00 – 17:00" },
-];
 
 function Page() {
   const { t } = useI18n();
+  usePageMeta("contact.hero.title", "contact.hero.subtitle");
+  const items = [
+    { icon: MapPin, label: t("contact.address"), value: "[ADDRESS]" },
+    { icon: Phone, label: t("contact.phone"), value: "[PHONE]", href: "tel:[PHONE]" },
+    { icon: Mail, label: t("contact.email"), value: "[EMAIL]", href: "mailto:[EMAIL]" },
+    { icon: Clock, label: t("contact.hours"), value: t("contact.hours.value") },
+  ];
   return (
     <>
-      <PageHero eyebrow="FinKorekt" title={t("nav.contact")} subtitle={t("error.message") /* reuse generic subtitle */} />
+      <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
 
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-12 lg:grid-cols-2">
@@ -52,8 +46,8 @@ function Page() {
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.65_0.18_255),transparent_60%)]" />
             <div className="relative">
               <p className="eyebrow text-blue-soft">FinKorekt</p>
-              <h3 className="mt-4 font-serif text-3xl">partner of Respect Slovakia</h3>
-              <p className="mt-4 text-white/70">Tešíme sa na osobné stretnutie alebo váš telefonát.</p>
+              <h3 className="mt-4 font-serif text-3xl">{t("contact.info.title")}</h3>
+              <p className="mt-4 text-white/70">{t("contact.info.subtitle")}</p>
             </div>
             <a
               href="https://www.google.com/maps"
@@ -61,7 +55,7 @@ function Page() {
               rel="noreferrer"
               className="relative inline-flex items-center gap-2 self-start mt-8 h-12 px-6 rounded-full bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/15"
             >
-              Open in Maps <ExternalLink size={14} />
+              {t("contact.map")} <ExternalLink size={14} />
             </a>
           </div>
         </div>

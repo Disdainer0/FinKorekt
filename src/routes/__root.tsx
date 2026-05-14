@@ -60,10 +60,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FinKorekt — Nezávislé poistné poradenstvo" },
-      { name: "description", content: "FinKorekt — nezávislý poistný maklér s ľudským prístupom. Partner of Respect Slovakia." },
-      { property: "og:title", content: "FinKorekt — Nezávislé poistné poradenstvo" },
-      { property: "og:description", content: "Nezávislé poistné poradenstvo s ľudským prístupom." },
+      { title: "FinKorekt" },
+      { name: "description", content: "FinKorekt" },
+      { property: "og:title", content: "FinKorekt" },
+      { property: "og:description", content: "FinKorekt" },
       { property: "og:type", content: "website" },
     ],
     links: [
@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="sk">
       <head>
         <HeadContent />
       </head>

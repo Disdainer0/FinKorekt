@@ -1,37 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { team, images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/o-nas")({
   component: Page,
-  head: () => ({
-    meta: [
-      { title: "O nás — FinKorekt" },
-      { name: "description", content: "Sme FinKorekt — váš spoľahlivý poistný partner s ľudskou tvárou." },
-    ],
-  }),
 });
-
-const mission = [
-  { title: "Dôkladná analýza", desc: "Pred každým odporúčaním dôkladne analyzujeme vaše potreby, riziká a možnosti — aby sme navrhli riešenie, ktoré vám skutočne sedí." },
-  { title: "Otvorená komunikácia", desc: "Hovoríme jasne a zrozumiteľne. Žiadny poistný žargón, žiadne skryté podmienky — len priama a úprimná komunikácia." },
-  { title: "Dlhodobý vzťah", desc: "Naša práca sa nekončí podpisom zmluvy. Pravidelne prehodnocujeme vaše poistenie a reagujeme na zmeny vo vašom živote." },
-  { title: "Nezávislé poradenstvo", desc: "Ako nezávislý maklér pracujeme výhradne vo váš prospech — porovnávame trh a odporúčame to najlepšie, nie to najvýhodnejšie pre nás." },
-];
-
-const values = [
-  { title: "Odbornosť", desc: "Dlhoročné skúsenosti v oblasti poistenia a finančného poradenstva, ktoré pretavujeme do konkrétnych riešení." },
-  { title: "Dôveryhodnosť", desc: "Transparentný prístup a čestné poradenstvo bez skrytých poplatkov alebo záujmových konfliktov." },
-  { title: "Individuálny prístup", desc: "Každý klient je pre nás jedinečný — riešenia tvoríme na mieru, nie podľa šablóny." },
-  { title: "Dostupnosť", desc: "Sme tu pre vás kedykoľvek potrebujete pomoc, radu alebo len odpoveď na otázku." },
-];
 
 function Page() {
   const { t } = useI18n();
+  usePageMeta("about.hero.title", "about.hero.subtitle");
+
+  const mission = [
+    { title: t("about.mission.item1.title"), desc: t("about.mission.item1.desc") },
+    { title: t("about.mission.item2.title"), desc: t("about.mission.item2.desc") },
+    { title: t("about.mission.item3.title"), desc: t("about.mission.item3.desc") },
+    { title: t("about.mission.item4.title"), desc: t("about.mission.item4.desc") },
+  ];
+
+  const values = [
+    { title: t("about.values.item1.title"), desc: t("about.values.item1.desc") },
+    { title: t("about.values.item2.title"), desc: t("about.values.item2.desc") },
+    { title: t("about.values.item3.title"), desc: t("about.values.item3.desc") },
+    { title: t("about.values.item4.title"), desc: t("about.values.item4.desc") },
+  ];
+
   return (
     <>
-      <PageHero eyebrow={t("nav.about")} title={t("nav.about")} subtitle={t("root.description")} />
+      <PageHero eyebrow={t("about.hero.eyebrow")} title={t("about.hero.title")} subtitle={t("about.hero.subtitle")} />
 
       <section className="py-28 bg-white">
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center">
@@ -39,16 +35,16 @@ function Page() {
             <img src={images.team} alt="" className="rounded-3xl w-full object-cover aspect-[5/6]" />
             <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl border border-border">
               <p className="font-serif text-4xl text-navy-deep">10+</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-1">rokov skúseností</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-1">{t("business.stats.experience")}</p>
             </div>
           </div>
           <div>
-            <p className="eyebrow text-blue-bright">Kto sme</p>
-            <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Poistné poradenstvo, ktoré vám skutočne rozumie</h2>
+            <p className="eyebrow text-blue-bright">{t("about.who.eyebrow")}</p>
+            <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("about.who.title")}</h2>
             <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed">
-              <p>FinKorekt je nezávislý poistný maklér a hrdý partner spoločnosti Respect Slovakia. Sme tím štyroch odborníčok, ktoré spájajú hlboké znalosti poistného trhu s úprimným záujmom o každého klienta.</p>
-              <p>Veríme, že dobré poistenie nie je len o číslach a paragrafoch — je o dôvere, jasnej komunikácii a istote, že keď to bude treba, niekto bude stáť pri vás. Preto pristupujeme ku každému klientovi individuálne a hľadáme riešenia, ktoré skutočne dávajú zmysel.</p>
-              <p>Spolupracujeme s poprednými poisťovňami na slovenskom trhu, čo nám umožňuje ponúknuť vám najlepšie podmienky a najširší výber poistných produktov — bez toho, aby sme uprednostňovali záujmy jednej poisťovne pred vašimi.</p>
+              <p>{t("about.who.p1")}</p>
+              <p>{t("about.who.p2")}</p>
+              <p>{t("about.who.p3")}</p>
             </div>
           </div>
         </div>
@@ -56,9 +52,9 @@ function Page() {
 
       <section className="py-28 bg-secondary">
         <div className="container-fk text-center max-w-3xl mx-auto">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Naše poslanie</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Poistenie bez kompromisov, s ľudským prístupom</h2>
-          <p className="mt-5 text-muted-foreground">Naším poslaním je zjednodušiť svet poistenia pre každého klienta. Chceme, aby ste rozumeli tomu, čo kupujete, cítili sa v bezpečí a vedeli, že máte niekoho, na koho sa môžete spoľahnúť.</p>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("about.mission.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("about.mission.title")}</h2>
+          <p className="mt-5 text-muted-foreground">{t("about.mission.subtitle")}</p>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {mission.map((b, i) => (
@@ -73,8 +69,8 @@ function Page() {
 
       <section className="py-28 bg-white">
         <div className="container-fk text-center">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Čo nás definuje</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Naše hodnoty</h2>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("about.values.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("about.values.title")}</h2>
         </div>
         <div className="container-fk mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {values.map((v) => (
@@ -88,9 +84,9 @@ function Page() {
 
       <section className="py-28 bg-secondary">
         <div className="container-fk text-center max-w-2xl mx-auto">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">Sme tu pre vás</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
-          <p className="mt-5 text-muted-foreground">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
+          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("about.team.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("about.team.title")}</h2>
+          <p className="mt-5 text-muted-foreground">{t("about.team.subtitle")}</p>
         </div>
         <div className="container-fk mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m, i) => (
