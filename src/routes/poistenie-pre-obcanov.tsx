@@ -69,23 +69,25 @@ function Page() {
     <>
       <PageHero eyebrow={t("individual.hero.eyebrow")} title={t("individual.hero.title")} subtitle={t("individual.hero.subtitle")} />
 
-      <section className="py-24 bg-white">
-        <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute -top-32 left-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed animate-fade-up relative z-10">
           {t("individual.intro")}
         </div>
       </section>
 
-      <section className="py-20 bg-secondary">
-        <div className="container-fk">
-          <div className="rounded-3xl bg-gradient-to-br from-navy-deep to-navy text-white p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div>
+      <section className="py-20 bg-secondary relative overflow-hidden">
+        <div className="absolute -top-40 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk relative z-10">
+          <div className="rounded-3xl bg-gradient-to-br from-navy-deep to-navy text-white p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 glow-on-hover animate-fade-up" style={{ animationDelay: '0.1s' }}>
+            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
               <p className="eyebrow text-blue-soft">{t("individual.calculator.eyebrow")}</p>
               <h2 className="mt-4 text-3xl md:text-4xl text-white">{t("individual.calculator.title")}</h2>
               <p className="mt-3 text-white/75 max-w-xl">{t("individual.calculator.subtitle")}</p>
             </div>
-            <a href="#" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors shrink-0">
+            <a href="#" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-all hover:shadow-lg hover:shadow-blue-bright/40 shrink-0 animate-fade-up" style={{ animationDelay: '0.3s' }}>
               <Calculator size={18} /> {t("individual.calculator.button")}
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-0.5 transition-transform">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={16} />
               </span>
             </a>

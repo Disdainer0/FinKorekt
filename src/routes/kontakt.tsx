@@ -22,10 +22,11 @@ function Page() {
     <>
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
 
-      <section className="py-28 bg-white">
-        <div className="container-fk grid gap-12 lg:grid-cols-2">
+      <section className="py-28 bg-white relative overflow-hidden">
+        <div className="absolute -top-32 left-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk grid gap-12 lg:grid-cols-2 relative z-10">
           <div className="grid gap-5 sm:grid-cols-2 self-start">
-            {items.map((it) => {
+            {items.map((it, idx) => {
               const Icon = it.icon;
               const inner = (
                 <>
@@ -36,15 +37,17 @@ function Page() {
                   <p className="mt-2 text-lg text-navy-deep font-medium">{it.value}</p>
                 </>
               );
+              const className = "rounded-3xl p-7 hover:shadow-lg transition-all duration-300 glow-on-hover animate-fade-up opacity-0";
+              const style = { animationDelay: `${0.1 + idx * 0.1}s`, animationFillMode: 'forwards', animation: 'fadeUp 0.6s ease-out forwards' };
               return it.href ? (
-                <a key={it.label} href={it.href} className="bg-secondary rounded-3xl p-7 hover:shadow-lg transition-shadow">{inner}</a>
+                <a key={it.label} href={it.href} className={`bg-secondary ${className}`} style={style}>{inner}</a>
               ) : (
-                <div key={it.label} className="bg-secondary rounded-3xl p-7">{inner}</div>
+                <div key={it.label} className={`bg-secondary ${className}`} style={style}>{inner}</div>
               );
             })}
           </div>
 
-          <div className="bg-navy-deep text-white rounded-3xl p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden">
+          <div className="bg-navy-deep text-white rounded-3xl p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden shadow-2xl glow-on-hover animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.65_0.18_255),transparent_60%)]" />
             <div className="relative">
               <img src={ShortLogo} alt="FinKorekt" className="h-7 w-auto object-contain" />

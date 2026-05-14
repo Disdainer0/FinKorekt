@@ -83,27 +83,30 @@ function Page() {
     <>
       <PageHero eyebrow={t("business.hero.eyebrow")} title={t("business.hero.title")} subtitle={t("business.hero.subtitle")} />
 
-      <section className="py-24 bg-white">
-        <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed animate-fade-up relative z-10">
           {t("business.intro")}
         </div>
       </section>
 
-      <section className="py-24 bg-secondary">
-        <div className="container-fk text-center">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("business.products.eyebrow")}</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("business.products.title")}</h2>
+      <section className="py-24 bg-secondary relative overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk text-center relative z-10">
+          <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("business.products.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("business.products.title")}</h2>
         </div>
-        <div className="container-fk mt-12 flex flex-wrap justify-center gap-3">
+        <div className="container-fk mt-12 flex flex-wrap justify-center gap-3 relative z-10">
           {items.map((pr, i) => {
             const PIcon = pr.icon;
             return (
               <button
                 key={pr.title}
                 onClick={() => setActive(i)}
-                className={`inline-flex items-center gap-2 h-12 px-5 rounded-full border text-sm font-medium transition-all ${
-                  active === i ? "bg-navy-deep border-navy-deep text-white" : "bg-white border-border text-foreground/70 hover:border-blue-bright/40"
+                className={`inline-flex items-center gap-2 h-12 px-5 rounded-full border text-sm font-medium transition-all animate-fade-up opacity-0 ${
+                  active === i ? "bg-navy-deep border-navy-deep text-white shadow-lg shadow-blue-bright/40" : "bg-white border-border text-foreground/70 hover:border-blue-bright/40 glow-on-hover"
                 }`}
+                style={{ animationDelay: `${0.2 + i * 0.08}s`, animationFillMode: 'forwards', animation: 'fadeUp 0.6s ease-out forwards' }}
               >
                 <PIcon size={16} />
                 {pr.title}
@@ -112,19 +115,19 @@ function Page() {
           })}
         </div>
 
-        <div className="container-fk mt-12 grid gap-10 lg:grid-cols-2 items-center bg-white rounded-3xl p-6 md:p-10 shadow-sm">
+        <div className="container-fk mt-12 grid gap-10 lg:grid-cols-2 items-center bg-white rounded-3xl p-6 md:p-10 shadow-lg glow-on-hover animate-fade-up relative z-10" style={{ animationDelay: '0.3s' }}>
           <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-            <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+            <img src={p.img} alt={p.title} className="h-full w-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
-          <div>
+          <div className="animate-fade-up" style={{ animationDelay: '0.4s' }}>
             <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
               <Icon size={20} />
             </span>
             <h3 className="mt-5 text-3xl text-navy-deep">{p.title}</h3>
             <p className="mt-4 text-muted-foreground leading-relaxed">{p.desc}</p>
             <ul className="mt-6 space-y-3">
-              {p.points.map((pt) => (
-                <li key={pt} className="flex gap-3">
+              {p.points.map((pt, idx) => (
+                <li key={pt} className="flex gap-3 animate-fade-up opacity-0" style={{ animationDelay: `${0.5 + idx * 0.1}s`, animationFillMode: 'forwards', animation: 'fadeUp 0.6s ease-out forwards' }}>
                   <Check size={18} className="text-blue-bright mt-0.5 shrink-0" />
                   <span className="text-foreground/80 text-sm">{pt}</span>
                 </li>
@@ -134,10 +137,11 @@ function Page() {
         </div>
       </section>
 
-      <section className="py-28 bg-white">
-        <div className="container-fk text-center max-w-3xl mx-auto">
-          <p className="eyebrow text-blue-bright justify-center mx-auto">{t("business.benefits.eyebrow")}</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("business.benefits.title")}</h2>
+      <section className="py-28 bg-white relative overflow-hidden">
+        <div className="absolute -bottom-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
+        <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
+          <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("business.benefits.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("business.benefits.title")}</h2>
           <p className="mt-5 text-muted-foreground">{t("business.benefits.subtitle")}</p>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
