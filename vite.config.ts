@@ -13,6 +13,6 @@ export default defineConfig({
         outputPath: "/index",
       },
     },
-    server: { entry: "server" },
+    server: { entry: "index" },
   },
 });
