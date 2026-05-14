@@ -34,7 +34,16 @@ jobs:
       - name: Detect build output directory
         run: |
           if [[ -d dist ]]; then
-            echo "BUILD_DIR=dist" >> "$GITHUB_ENV"
+            if [[ -f dist/index.html ]]; then
+              echo "BUILD_DIR=dist" >> "$GITHUB_ENV"
+            elif [[ -f dist/client/index.html ]]; then
+              echo "BUILD_DIR=dist/client" >> "$GITHUB_ENV"
+            elif [[ -f dist/_shell.html ]]; then
+              echo "BUILD_DIR=dist" >> "$GITHUB_ENV"
+            else
+              # fallthrough to check other known outputs
+              true
+            fi
           elif [[ -d .output/public ]]; then
             echo "BUILD_DIR=.output/public" >> "$GITHUB_ENV"
           elif [[ -d .output/client ]]; then
