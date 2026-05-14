@@ -37,13 +37,12 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-fk py-6 flex flex-col md:flex-row gap-2 items-center justify-between text-xs text-white/50">
-          <span className="inline-flex items-center gap-3">
-            <span>© {new Date().getFullYear()}</span>
-            <img src={LongLogo} alt="FinKorekt" className="h-4 w-auto object-contain" />
-            <span>{t("footer.copyright")}</span>
-          </span>
-          <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
+        <div className="container-fk py-8 flex flex-col md:flex-row gap-6 items-center justify-between">
+          <span className="text-xs text-white/60">© {new Date().getFullYear()} <img src={LongLogo} alt="FinKorekt" className="h-3 w-auto object-contain inline ml-2" /> {t("footer.copyright")}</span>
+          <div className="flex items-center gap-2 text-xs text-white/60">
+            <span>Partner of</span>
+            <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
+          </div>
         </div>
       </div>
     </footer>

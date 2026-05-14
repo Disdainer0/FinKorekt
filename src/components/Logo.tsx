@@ -40,16 +40,19 @@ export function Logo({ light = false }: { light?: boolean }) {
           <span className={`block text-lg font-semibold ${light ? "text-white" : "text-foreground"}`}>FinKorekt</span>
         )}
 
-        {!respectError ? (
-          <img
-            src={RespectLogo}
-            alt="Respect"
-            onError={() => setRespectError(true)}
-            className={`h-3 w-auto max-w-[120px] object-contain ${supportBg}`}
-          />
-        ) : (
-          <span className={`block text-[10px] uppercase tracking-[0.22em] ${light ? "text-white/70" : "text-muted-foreground"}`}>Respect</span>
-        )}
+        <span className={`flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] ${light ? "text-white/70" : "text-muted-foreground"}`}>
+          <span>Partner of</span>
+          {!respectError ? (
+            <img
+              src={RespectLogo}
+              alt="Respect"
+              onError={() => setRespectError(true)}
+              className={`h-3 w-auto max-w-[100px] object-contain`}
+            />
+          ) : (
+            <span>Respect</span>
+          )}
+        </span>
       </span>
     </Link>
   );

@@ -35,9 +35,12 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
         </div>
         <div className="container-fk relative pt-32 pb-24 animate-fade-up">
-          <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
-          <img src={LongLogo} alt="FinKorekt" className="mt-8 h-16 md:h-24 w-auto object-contain" />
-          <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{t("home.hero.description")}</p>
+          <div className="flex items-center gap-3">
+            <span className="text-sm uppercase tracking-[0.15em] text-white/75 font-medium">Partner of</span>
+            <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+          </div>
+          <img src={LongLogo} alt="FinKorekt" className="mt-8 h-20 md:h-28 w-auto object-contain" />
+          <p className="mt-10 max-w-xl text-lg text-white/80 leading-relaxed">{t("home.hero.description")}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link to="/poistenie-pre-firmy" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-colors">
               {t("home.cta.businesses")}
