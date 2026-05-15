@@ -25,14 +25,17 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onDark = isHome && !scrolled;
+  const shouldHaveBg = !isHome || scrolled;
+  const onDark = !shouldHaveBg; // header sits on dark hero when on home and not scrolled
   const textCls = onDark ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-foreground";
   const activeColor = onDark ? "text-white" : "text-blue-bright";
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/85 backdrop-blur-xl border-b border-border shadow-[0_1px_0_rgba(0,0,0,0.02)]" : "bg-transparent"
+        shouldHaveBg
+          ? "bg-white/85 backdrop-blur-xl border-b border-border shadow-[0_1px_0_rgba(0,0,0,0.02)]"
+          : "bg-transparent"
       }`}
     >
       <div className="container-fk flex h-20 items-center justify-between">
