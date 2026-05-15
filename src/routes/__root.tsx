@@ -9,9 +9,12 @@ import {
 } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { I18nProvider, useI18n } from "@/lib/i18n";
 
 import appCss from "../styles.css?url";
+import ShortLogoUrl from "@/IMG/ShortLogo.svg?url";
+import previewPhotoUrl from "@/IMG/previewphoto.png?url";
 
 function NotFoundComponent() {
   const { t } = useI18n();
@@ -65,11 +68,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "FinKorekt" },
       { property: "og:description", content: "FinKorekt" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: previewPhotoUrl },
+      { property: "og:image:type", content: "image/png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: previewPhotoUrl },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/IMG/ShortLogo.svg", type: "image/svg+xml" },
-      { rel: "apple-touch-icon", href: "/IMG/ShortLogo.svg" },
+      { rel: "icon", href: ShortLogoUrl, type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: ShortLogoUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" },
@@ -105,6 +112,7 @@ function RootComponent() {
         <main className="min-h-screen">
           <Outlet />
         </main>
+        <PartnerMarquee />
         <Footer />
       </I18nProvider>
     </QueryClientProvider>

@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { team, images } from "@/lib/site-data";
-import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 import LongLogo from "@/IMG/LongLogo.svg";
 import RespectLogo from "@/IMG/RespectLogo.svg";
@@ -144,8 +143,6 @@ function Index() {
           ))}
         </div>
       </section>
-
-      <PartnerMarquee />
     </>
   );
 }

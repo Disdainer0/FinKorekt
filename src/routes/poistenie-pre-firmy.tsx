@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Check, Shield, HandCoins, Wheat, BarChart3, Scale, LineChart } from "lucide-react";
 import { images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
-import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/poistenie-pre-firmy")({
@@ -183,7 +182,6 @@ function Page() {
         </div>
       </section>
 
-      <PartnerMarquee />
     </>
   );
 }

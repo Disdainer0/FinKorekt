@@ -21,7 +21,7 @@ export function PartnerMarquee() {
               href={p.url}
               target="_blank"
               rel="noreferrer"
-              className="group shrink-0 flex items-center justify-center h-16 md:h-20"
+              className="group shrink-0 flex items-center justify-center h-24 md:h-28"
               aria-label={p.name}
             >
               {!hidden[i] && (
@@ -29,7 +29,7 @@ export function PartnerMarquee() {
                   src={p.logo}
                   alt={p.name}
                   loading="lazy"
-                  className="max-h-full max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100"
+                  className="max-h-full max-w-[200px] object-contain transition-transform duration-300 group-hover:scale-110 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100"
                   onError={(e) => {
                     const copy = { ...hidden };
                     copy[i] = true;

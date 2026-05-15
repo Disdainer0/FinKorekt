@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Check, Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";
 import { images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
-import { PartnerMarquee } from "@/components/PartnerMarquee";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 
 export const Route = createFileRoute("/poistenie-pre-obcanov")({
@@ -173,7 +172,6 @@ function Page() {
         </div>
       </section>
 
-      <PartnerMarquee />
     </>
   );
 }
