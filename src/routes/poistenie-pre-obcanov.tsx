@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";
+import { Heart, Home, Plane, Car, ArrowRight, Calculator } from "lucide-react";
 import { images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
@@ -50,7 +50,6 @@ function Page() {
   const [active, setActive] = useState(0);
   const items = products(t);
   const p = items[active];
-  const Icon = p.icon;
   const benefits = [
     { title: t("individual.benefits.b1.title"), desc: t("individual.benefits.b1.desc") },
     { title: t("individual.benefits.b2.title"), desc: t("individual.benefits.b2.desc") },
@@ -100,21 +99,17 @@ function Page() {
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">{t("individual.products.title")}</h2>
         </div>
         <div className="container-fk mt-12 flex flex-wrap justify-center gap-3">
-          {items.map((pr, i) => {
-            const PIcon = pr.icon;
-            return (
-              <button
-                key={pr.title}
-                onClick={() => setActive(i)}
-                className={`inline-flex items-center gap-2 h-12 px-5 rounded-full border text-sm font-medium transition-all ${
-                  active === i ? "bg-navy-deep border-navy-deep text-white" : "bg-white border-border text-foreground/70 hover:border-blue-bright/40"
-                }`}
-              >
-                <PIcon size={16} />
-                {pr.title}
-              </button>
-            );
-          })}
+          {items.map((pr, i) => (
+            <button
+              key={pr.title}
+              onClick={() => setActive(i)}
+              className={`inline-flex items-center h-12 px-5 rounded-full border text-sm font-medium transition-all ${
+                active === i ? "bg-navy-deep border-navy-deep text-white" : "bg-white border-border text-foreground/70 hover:border-blue-bright/40"
+              }`}
+            >
+              {pr.title}
+            </button>
+          ))}
         </div>
 
         <div className="container-fk mt-12 grid gap-10 lg:grid-cols-2 items-center bg-secondary rounded-3xl p-6 md:p-10">
@@ -122,15 +117,12 @@ function Page() {
             <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
           </div>
           <div>
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
-              <Icon size={20} />
-            </span>
-            <h3 className="mt-5 text-3xl text-navy-deep">{p.title}</h3>
+            <h3 className="text-3xl text-navy-deep">{p.title}</h3>
             <p className="mt-4 text-muted-foreground leading-relaxed">{p.desc}</p>
             <ul className="mt-6 space-y-3">
               {p.points.map((pt) => (
                 <li key={pt} className="flex gap-3">
-                  <Check size={18} className="text-blue-bright mt-0.5 shrink-0" />
+                  <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-blue-bright" />
                   <span className="text-foreground/80 text-sm">{pt}</span>
                 </li>
               ))}

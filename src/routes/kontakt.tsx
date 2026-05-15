@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 import RespectLogo from "@/IMG/RespectLogo.svg";
-import ShortLogo from "@/IMG/ShortLogo.svg";
+import LongLogo from "@/IMG/LongLogo.svg";
 
 export const Route = createFileRoute("/kontakt")({
   component: Page,
@@ -50,7 +50,7 @@ function Page() {
           <div className="bg-navy-deep text-white rounded-3xl p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden shadow-2xl glow-on-hover animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.65_0.18_255),transparent_60%)]" />
             <div className="relative">
-              <img src={ShortLogo} alt="FinKorekt" className="h-7 w-auto object-contain" />
+              <img src={LongLogo} alt="FinKorekt" className="h-7 w-auto object-contain" />
               <div className="mt-6 flex items-center gap-2">
                 <span className="text-sm text-white/75">Partner of</span>
                 <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />

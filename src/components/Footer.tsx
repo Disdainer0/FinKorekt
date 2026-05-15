@@ -3,7 +3,6 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/lib/i18n";
 import RespectLogo from "@/IMG/RespectLogo.svg";
-import LongLogo from "@/IMG/LongLogo.svg";
 
 export function Footer() {
   const { t } = useI18n();
@@ -38,7 +37,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-fk py-8 flex flex-col md:flex-row gap-6 items-center justify-between">
-          <span className="text-xs text-white/60">© {new Date().getFullYear()} <img src={LongLogo} alt="FinKorekt" className="h-3 w-auto object-contain inline ml-2" /> {t("footer.copyright")}</span>
+          <span className="text-xs text-white/60">© {new Date().getFullYear()} FinKorekt {t("footer.copyright")}</span>
           <div className="flex items-center gap-2 text-xs text-white/60">
             <span>Partner of</span>
             <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
