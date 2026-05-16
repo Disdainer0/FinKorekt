@@ -5,6 +5,7 @@ import { team, images } from "@/lib/site-data";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 import LongLogo from "@/IMG/LongLogo.svg";
 import RespectLogo from "@/IMG/RespectLogo.svg";
+import GeneralPhoto from "@/IMG/generalphoto.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -41,26 +42,35 @@ function Index() {
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,oklch(0.55_0.17_255),transparent_62%)]" style={{ transform: `translateY(${scrollY * 0.3}px)` }} />
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(79, 102, 214, 0.1) 0%, transparent 50%)', transform: `translateY(${scrollY * 0.5}px)` }} />
-        </div>
-        <div className="container-fk relative pt-32 pb-24 animate-fade-up" style={{ transform: `translateY(${scrollY * 0.3}px)` }}>
-          <div>
-            <img src={LongLogo} alt="FinKorekt" className="h-24 md:h-32 w-auto object-contain animate-fade-up" style={{ animationDelay: '0.1s' }} />
-            <div className="mt-6 flex items-center gap-2">
-              <span className="text-sm uppercase tracking-[0.15em] text-white/75 font-medium">Partner of</span>
-              <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
-            </div>
+          <div className="absolute inset-0 pointer-events-none z-10">
+            <div className="absolute inset-0 bg-cover bg-[center_right_22%] scale-[1.08] brightness-[0.7] contrast-[0.92] saturate-[0.78]" style={{ backgroundImage: `url(${GeneralPhoto})` }} />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(2,6,23,0.15) 0%, rgba(2,6,23,0.55) 35%, rgba(2,6,23,0.88) 65%, rgba(2,6,23,1) 100%)" }} />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,rgba(56,189,248,0.08),transparent_34%)] mix-blend-screen pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_48%,rgba(2,6,23,0.28)_100%)] pointer-events-none" />
           </div>
-          <p className="mt-12 max-w-xl text-lg text-white/80 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>{t("home.hero.description")}</p>
-          <div className="mt-12 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <Link to="/poistenie-pre-firmy" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-all hover:shadow-lg hover:shadow-blue-bright/40 duration-300">
-              {t("home.cta.businesses")}
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-1 transition-transform">
-                <ArrowRight size={16} />
-              </span>
-            </Link>
-            <Link to="/poistenie-pre-obcanov" className="inline-flex items-center h-14 px-7 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 hover:border-white/50 transition-all duration-300">
-              {t("home.cta.individuals")}
-            </Link>
+          <div className="absolute inset-y-0 left-0 w-[56%] md:w-[44%] z-20 pointer-events-none backdrop-blur-[2px] bg-[linear-gradient(to_right,rgba(2,6,23,0.18)_0%,rgba(2,6,23,0.08)_46%,transparent_100%)]" />
+        </div>
+        <div className="container-fk relative z-30 pt-24 pb-16 animate-fade-up" style={{ transform: `translateY(${scrollY * 0.3}px)` }}>
+          <div className="space-y-6 max-w-xl md:max-w-2xl pr-6 md:pr-12">
+            <div>
+              <img src={LongLogo} alt="FinKorekt" className="h-24 md:h-32 w-auto object-contain animate-fade-up" style={{ animationDelay: '0.1s' }} />
+              <div className="mt-6 flex items-center gap-2">
+                <span className="text-sm uppercase tracking-[0.15em] text-white/75 font-medium">Partner of</span>
+                <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+              </div>
+            </div>
+            <p className="mt-6 text-lg text-white/80 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>{t("home.hero.description")}</p>
+            <div className="mt-6 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+              <Link to="/poistenie-pre-firmy" className="group inline-flex items-center gap-3 h-14 pl-7 pr-3 rounded-full bg-blue-bright text-white font-medium hover:bg-blue-bright/90 transition-all hover:shadow-lg hover:shadow-blue-bright/40 duration-300">
+                {t("home.cta.businesses")}
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 group-hover:translate-x-1 transition-transform">
+                  <ArrowRight size={16} />
+                </span>
+              </Link>
+              <Link to="/poistenie-pre-obcanov" className="inline-flex items-center h-14 px-7 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 hover:border-white/50 transition-all duration-300">
+                {t("home.cta.individuals")}
+              </Link>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-10 left-0 right-0 container-fk flex items-center justify-center gap-3 text-xs uppercase tracking-[0.3em] text-white/50 animate-bounce" style={{ animationDuration: '3s' }}>
