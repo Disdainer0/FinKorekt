@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Shield, HandCoins, Wheat, BarChart3, Scale, LineChart } from "lucide-react";
+import { Check, Shield, HandCoins, Wheat, BarChart3, Scale, LineChart, Sliders, Search, Clock, Award } from "lucide-react";
 import { images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
@@ -66,10 +66,10 @@ function Page() {
   const p = items[active];
   const Icon = p.icon;
   const benefits = [
-    { title: t("business.benefits.b1.title"), desc: t("business.benefits.b1.desc") },
-    { title: t("business.benefits.b2.title"), desc: t("business.benefits.b2.desc") },
-    { title: t("business.benefits.b3.title"), desc: t("business.benefits.b3.desc") },
-    { title: t("business.benefits.b4.title"), desc: t("business.benefits.b4.desc") },
+    { icon: Sliders, title: t("business.benefits.b1.title"), desc: t("business.benefits.b1.desc") },
+    { icon: Search, title: t("business.benefits.b2.title"), desc: t("business.benefits.b2.desc") },
+    { icon: Clock, title: t("business.benefits.b3.title"), desc: t("business.benefits.b3.desc") },
+    { icon: Award, title: t("business.benefits.b4.title"), desc: t("business.benefits.b4.desc") },
   ];
   const steps = [
     { n: "1", title: t("business.steps.s1.title"), desc: t("business.steps.s1.desc") },
@@ -144,13 +144,20 @@ function Page() {
           <p className="mt-5 text-muted-foreground">{t("business.benefits.subtitle")}</p>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((b, i) => (
-            <div key={b.title} className="bg-secondary rounded-3xl p-8 hover:shadow-lg transition-shadow">
-              <span className="font-serif text-blue-bright text-2xl">0{i + 1}</span>
-              <h3 className="mt-4 text-xl text-navy-deep">{b.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
-            </div>
-          ))}
+          {benefits.map((b, i) => {
+            const BIcon = b.icon;
+            return (
+              <div key={b.title} className="bg-secondary rounded-3xl p-8 hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
+                    <BIcon size={18} />
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl text-navy-deep">{b.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
