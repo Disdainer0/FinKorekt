@@ -13,9 +13,9 @@ export function Footer() {
           <Logo light />
           <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">{t("footer.description")}</p>
           <ul className="mt-8 space-y-3 text-sm">
-            <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>[ADDRESS]</span></li>
-            <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href="tel:[PHONE]">[PHONE]</a></li>
-            <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5 text-blue-soft" /><a href="mailto:[EMAIL]">[EMAIL]</a></li>
+            <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>Košice, Werferova 1, 4. poschodie, kancelária 409</span></li>
+            <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href="tel:+421905984133">+421 905 984 133</a></li>
+            <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5 text-blue-soft" /><a href="mailto:samuova@respect-slovakia.sk">samuova@respect-slovakia.sk</a></li>
           </ul>
         </div>
 
