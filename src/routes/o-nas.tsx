@@ -92,7 +92,7 @@ function Page() {
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("about.team.title")}</h2>
           <p className="mt-5 text-muted-foreground animate-fade-up" style={{ animationDelay: '0.2s' }}>{t("about.team.subtitle")}</p>
         </div>
-        <div className="container-fk mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 relative z-10">
+        <div className="container-fk mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
           {team.map((m, i) => (
             <article key={i} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 animate-fade-up opacity-0" style={{ animationDelay: `${0.3 + i * 0.1}s`, animationFillMode: 'forwards', animation: 'fadeUp 0.6s ease-out forwards' }}>
               <div className="aspect-[5/6] overflow-hidden">
@@ -102,10 +102,10 @@ function Page() {
                 <h3 className="font-serif text-xl text-navy-deep">{m.name}</h3>
                 <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
                   <a href={`mailto:${m.email}`} className="flex items-center gap-2 hover:text-blue-bright transition-colors">
-                    <span className="text-blue-bright">✉</span> {m.email}
+                    <span className="text-blue-bright">✉</span> <span className="whitespace-nowrap">{m.email}</span>
                   </a>
                   <a href={`tel:${m.phone}`} className="flex items-center gap-2 hover:text-blue-bright transition-colors">
-                    <span className="text-blue-bright">☏</span> {m.phone}
+                    <span className="text-blue-bright">☏</span> <span className="whitespace-nowrap">{m.phone}</span>
                   </a>
                 </div>
               </div>

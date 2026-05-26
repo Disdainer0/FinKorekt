@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart, Home, Plane, Car, ArrowRight, Calculator, Users, Search, LifeBuoy, Clock, Phone, Mail } from "lucide-react";
-import { images } from "@/lib/site-data";
+import { images, team } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 
@@ -62,6 +62,10 @@ function Page() {
     { n: "3", title: t("individual.steps.s3.title"), desc: t("individual.steps.s3.desc") },
     { n: "4", title: t("individual.steps.s4.title"), desc: t("individual.steps.s4.desc") },
   ];
+
+  useEffect(() => {
+    console.log("team (client)", team);
+  }, []);
 
   return (
     <>
@@ -178,35 +182,53 @@ function Page() {
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
           <h2 className="mt-6 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
         </div>
-        <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 relative z-10">
-          {[
-            { name: "Ing. Gabriela Šamouvá", phone: "+421 905 984 133", email: "samuova@respect-slovakia.sk" },
-            { name: "Ing. Dagmar Rovňáková", phone: "+421 915 895 320", email: "rovnakova@respect-slovakia.sk" },
-            { name: "Ing. Slivková Anežka", phone: "+421 908 996 474", email: "slivkova@respect-slovakia.sk" },
-            { name: "Ing. Monika Fridrichová", phone: "+421 905 116 898", email: "fridrichova@respect-slovakia.sk" },
-          ].map((person, index) => (
-            <article key={person.email} className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow">
+        <div id="team-cards" className="container-fk mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 relative z-10">
+          {team.map((person, index) => (
+            <article
+              key={person.email}
+              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow"
+            >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl text-navy-deep">{person.name}</h3>
                 <span className="font-serif text-2xl text-blue-bright/30">0{index + 1}</span>
               </div>
-              <div className="mt-5 space-y-3 text-sm text-muted-foreground">
+
+              <div className="mt-5 space-y-4 text-sm">
                 <div className="flex items-start gap-3">
-                  <Phone size={16} className="mt-0.5 shrink-0 text-blue-bright" />
-                  <a href={`tel:${person.phone.replace(/\s+/g, "")}`} className="text-foreground/90 hover:text-blue-bright transition-colors font-medium">
-                    Mobil: {person.phone}
-                  </a>
+                  <Phone size={18} className="mt-0.5 shrink-0 text-blue-bright" />
+
+                  <div>
+                    <div className="text-xs text-muted-foreground">Mobil</div>
+
+                    <a
+                      href={`tel:${person.phone.replace(/\s+/g, "")}`}
+                      className="block text-sm font-semibold text-navy-deep whitespace-nowrap"
+                    >
+                      {person.phone}
+                    </a>
+                  </div>
                 </div>
+
                 <div className="flex items-start gap-3">
-                  <Mail size={16} className="mt-0.5 shrink-0 text-blue-bright" />
-                  <a href={`mailto:${person.email}`} className="text-foreground/90 hover:text-blue-bright transition-colors font-medium break-all">
-                    E-mail: {person.email}
-                  </a>
+                  <Mail size={18} className="mt-0.5 shrink-0 text-blue-bright" />
+
+                  <div>
+                    <div className="text-xs text-muted-foreground">E-mail</div>
+
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="block text-sm font-semibold text-navy-deep whitespace-nowrap"
+                    >
+                      {person.email}
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
           ))}
         </div>
+
+      
       </section>
 
     </>

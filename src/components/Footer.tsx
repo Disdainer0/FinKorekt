@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/lib/i18n";
 import RespectLogo from "@/IMG/RespectLogo.svg";
+import { contact } from "@/lib/site-data";
 
 export function Footer() {
   const { t } = useI18n();
@@ -13,9 +14,9 @@ export function Footer() {
           <Logo light />
           <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">{t("footer.description")}</p>
           <ul className="mt-8 space-y-3 text-sm">
-            <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>Košice, Werferova 1, 4. poschodie, kancelária 409</span></li>
-            <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href="tel:+421905984133">+421 905 984 133</a></li>
-            <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5 text-blue-soft" /><a href="mailto:samuova@respect-slovakia.sk">samuova@respect-slovakia.sk</a></li>
+            <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>{contact.address}</span></li>
+            <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href={`tel:${contact.phone.replace(/\s+/g, "")}`}>{contact.phone}</a></li>
+            <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5 text-blue-soft" /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
           </ul>
         </div>
 

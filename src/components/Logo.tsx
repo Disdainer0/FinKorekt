@@ -10,13 +10,13 @@ export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className="inline-block transition-opacity hover:opacity-85">
       <div className="flex items-center">
-        <img src={ShortLogo} alt="FK" className={`h-8 w-8 object-contain md:hidden ${toneClass}`} onError={() => {}} />
+        <img src={ShortLogo} alt="FK" className={`h-8 w-8 object-contain md:hidden ${toneClass} border-none bg-transparent`} onError={() => {}} />
         {!longError ? (
           <img
             src={LongLogo}
             alt="FinKorekt"
             onError={() => setLongError(true)}
-            className={`hidden md:block h-8 w-auto object-contain ${toneClass}`}
+            className={`hidden md:block h-8 w-auto object-contain ${toneClass} border-none bg-transparent`}
           />
         ) : (
           <span className={`hidden md:block text-lg font-semibold ${light ? "text-white" : "text-foreground"}`}>FinKorekt</span>

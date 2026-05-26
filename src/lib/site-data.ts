@@ -46,11 +46,17 @@ const u = (id: string, w = 1200, h = 1500) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
 export const team = [
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1573496359142-b8d87734a5a2", 600, 720) },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1580489944761-15a19d654956", 600, 720) },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1438761681033-6461ffad8d80", 600, 720) },
-  { name: "[NAME]", email: "[EMAIL]", phone: "[PHONE]", img: u("photo-1494790108377-be9c29b29330", 600, 720) },
+  { name: "Ing. Gabriela Šamouvá", email: "samuova@respect-slovakia.sk", phone: "+421 905 984 133", img: u("photo-1573496359142-b8d87734a5a2", 600, 720) },
+  { name: "Ing. Dagmar Rovňáková", email: "rovnakova@respect-slovakia.sk", phone: "+421 915 895 320", img: u("photo-1580489944761-15a19d654956", 600, 720) },
+  { name: "Ing. Slivková Anežka", email: "slivkova@respect-slovakia.sk", phone: "+421 908 996 474", img: u("photo-1438761681033-6461ffad8d80", 600, 720) },
+  { name: "Ing. Monika Fridrichová", email: "fridrichova@respect-slovakia.sk", phone: "+421 905 116 898", img: u("photo-1494790108377-be9c29b29330", 600, 720) },
 ];
+
+export const contact = {
+  address: "Košice, Werferova 1, 4. poschodie, kancelária 409",
+  phone: "+421 905 984 133",
+  email: "samuova@respect-slovakia.sk",
+};
 
 export const heroImg = u("photo-1573497019940-1c28c88b4f3e", 1920, 1200);
 

@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
 import RespectLogo from "@/IMG/RespectLogo.svg";
 import LongLogo from "@/IMG/LongLogo.svg";
+import { contact } from "@/lib/site-data";
 
 export const Route = createFileRoute("/kontakt")({
   component: Page,
@@ -13,9 +14,9 @@ function Page() {
   const { t } = useI18n();
   usePageMeta("contact.hero.title", "contact.hero.subtitle");
   const items = [
-    { icon: MapPin, label: t("contact.address"), value: "[ADDRESS]" },
-    { icon: Phone, label: t("contact.phone"), value: "[PHONE]", href: "tel:[PHONE]" },
-    { icon: Mail, label: t("contact.email"), value: "[EMAIL]", href: "mailto:[EMAIL]" },
+    { icon: MapPin, label: t("contact.address"), value: contact.address },
+    { icon: Phone, label: t("contact.phone"), value: contact.phone, href: `tel:${contact.phone.replace(/\s+/g, "")}` },
+    { icon: Mail, label: t("contact.email"), value: contact.email, href: `mailto:${contact.email}` },
     { icon: Clock, label: t("contact.hours"), value: t("contact.hours.value") },
   ];
   return (

@@ -142,10 +142,10 @@ function Index() {
                 <h3 className="font-serif text-xl text-navy-deep">{m.name}</h3>
                 <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
                   <a href={`mailto:${m.email}`} className="flex items-center gap-2 hover:text-blue-bright transition-colors">
-                    <span className="text-blue-bright">✉</span> {m.email}
+                    <span className="text-blue-bright">✉</span> <span className="whitespace-nowrap">{m.email}</span>
                   </a>
                   <a href={`tel:${m.phone}`} className="flex items-center gap-2 hover:text-blue-bright transition-colors">
-                    <span className="text-blue-bright">☏</span> {m.phone}
+                    <span className="text-blue-bright">☏</span> <span className="whitespace-nowrap">{m.phone}</span>
                   </a>
                 </div>
               </div>
