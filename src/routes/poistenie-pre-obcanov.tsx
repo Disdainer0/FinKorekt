@@ -175,8 +175,8 @@ function Page() {
         <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto">Sme tu pre vás</p>
-          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
-          <p className="mt-5 text-muted-foreground">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
+          <h2 className="mt-6 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 relative z-10">
           {[
@@ -193,13 +193,13 @@ function Page() {
               <div className="mt-5 space-y-3 text-sm text-muted-foreground">
                 <div className="flex items-start gap-3">
                   <Phone size={16} className="mt-0.5 shrink-0 text-blue-bright" />
-                  <a href={`tel:${person.phone.replace(/\s+/g, "")}`} className="text-navy-deep hover:text-blue-bright transition-colors font-medium">
+                  <a href={`tel:${person.phone.replace(/\s+/g, "")}`} className="text-foreground/90 hover:text-blue-bright transition-colors font-medium">
                     Mobil: {person.phone}
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={16} className="mt-0.5 shrink-0 text-blue-bright" />
-                  <a href={`mailto:${person.email}`} className="text-navy-deep hover:text-blue-bright transition-colors font-medium break-all">
+                  <a href={`mailto:${person.email}`} className="text-foreground/90 hover:text-blue-bright transition-colors font-medium break-all">
                     E-mail: {person.email}
                   </a>
                 </div>
