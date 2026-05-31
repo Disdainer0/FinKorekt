@@ -72,14 +72,12 @@ function Page() {
       <PageHero eyebrow={t("individual.hero.eyebrow")} title={t("individual.hero.title")} subtitle={t("individual.hero.subtitle")} />
 
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute -top-32 left-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed animate-fade-up relative z-10">
           {t("individual.intro")}
         </div>
       </section>
 
       <section className="py-20 bg-secondary relative overflow-hidden">
-        <div className="absolute -top-40 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk relative z-10">
           <div className="rounded-3xl bg-gradient-to-br from-navy-deep to-navy text-white p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 glow-on-hover animate-fade-up" style={{ animationDelay: '0.1s' }}>
             <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
@@ -176,7 +174,6 @@ function Page() {
       </section>
 
       <section className="py-28 bg-secondary relative overflow-hidden">
-        <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto">Sme tu pre vás</p>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>

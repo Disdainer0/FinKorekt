@@ -30,7 +30,6 @@ function Page() {
       <PageHero eyebrow={t("about.hero.eyebrow")} title={t("about.hero.title")} subtitle={t("about.hero.subtitle")} />
 
       <section className="py-28 bg-white relative overflow-hidden">
-        <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk grid gap-16 lg:grid-cols-2 items-center relative z-10">
           <div className="relative floating">
             <img src={images.team} alt="" className="rounded-3xl w-full object-cover aspect-[5/6] shadow-lg" />
@@ -52,7 +51,6 @@ function Page() {
       </section>
 
       <section className="py-28 bg-secondary relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("about.mission.eyebrow")}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("about.mission.title")}</h2>
@@ -70,7 +68,6 @@ function Page() {
       </section>
 
       <section className="py-28 bg-white relative overflow-hidden">
-        <div className="absolute -bottom-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("about.values.eyebrow")}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("about.values.title")}</h2>
@@ -86,7 +83,6 @@ function Page() {
       </section>
 
       <section className="py-28 bg-secondary relative overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center max-w-2xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("about.team.eyebrow")}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("about.team.title")}</h2>

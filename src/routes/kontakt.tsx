@@ -24,7 +24,6 @@ function Page() {
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
 
       <section className="py-28 bg-white relative overflow-hidden">
-        <div className="absolute -top-32 left-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk grid gap-12 lg:grid-cols-2 relative z-10">
           <div className="grid gap-5 sm:grid-cols-2 self-start">
             {items.map((it, idx) => {
@@ -51,7 +50,6 @@ function Page() {
           </div>
 
           <div className="bg-navy-deep text-white rounded-3xl p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden shadow-2xl glow-on-hover animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.65_0.18_255),transparent_60%)]" />
             <div className="relative">
               <img src={LongLogo} alt="FinKorekt" className="h-7 w-auto object-contain" />
               <div className="mt-6 flex items-center gap-2">

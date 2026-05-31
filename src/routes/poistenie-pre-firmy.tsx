@@ -83,14 +83,12 @@ function Page() {
       <PageHero eyebrow={t("business.hero.eyebrow")} title={t("business.hero.title")} subtitle={t("business.hero.subtitle")} />
 
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed animate-fade-up relative z-10">
           {t("business.intro")}
         </div>
       </section>
 
       <section className="py-24 bg-secondary relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("business.products.eyebrow")}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("business.products.title")}</h2>
@@ -137,7 +135,6 @@ function Page() {
       </section>
 
       <section className="py-28 bg-white relative overflow-hidden">
-        <div className="absolute -bottom-32 right-0 w-96 h-96 rounded-full bg-blue-bright/5 blur-3xl" />
         <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto animate-fade-up">{t("business.benefits.eyebrow")}</p>
           <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep animate-fade-up" style={{ animationDelay: '0.1s' }}>{t("business.benefits.title")}</h2>
