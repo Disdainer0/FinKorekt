@@ -8,11 +8,11 @@ import { contact } from "@/lib/site-data";
 export function Footer() {
   const { t } = useI18n();
   return (
-    <footer className="bg-navy-deep text-white/80">
+    <footer className="bg-navy-deep text-white">
       <div className="container-fk py-20 grid gap-12 md:grid-cols-3">
         <div>
           <Logo light />
-          <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">{t("footer.description")}</p>
+          <p className="mt-6 text-sm leading-relaxed text-white max-w-xs">{t("footer.description")}</p>
           <ul className="mt-8 space-y-3 text-sm">
             <li className="flex items-start gap-3">
               <MapPin size={16} className="mt-0.5 text-blue-soft" />
@@ -28,7 +28,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">{t("nav.menu")}</h4>
+          <h4 className="text-xs uppercase tracking-[0.22em] text-white font-sans font-medium">{t("nav.menu")}</h4>
           <ul className="mt-6 space-y-3 text-sm">
             <li><Link to="/o-nas" className="hover:text-white">{t("nav.about")}</Link></li>
             <li><Link to="/poistenie-pre-firmy" className="hover:text-white">{t("nav.forBusinesses")}</Link></li>
@@ -38,7 +38,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-[0.22em] text-white/55 font-sans font-medium">{t("footer.hours")}</h4>
+          <h4 className="text-xs uppercase tracking-[0.22em] text-white font-sans font-medium">{t("footer.hours")}</h4>
           <p className="mt-6 text-sm">{t("footer.hours")}</p>
         </div>
       </div>
@@ -48,7 +48,9 @@ export function Footer() {
           <span className="text-xs">© {new Date().getFullYear()} FinKorekt {t("footer.copyright")}</span>
           <div className="flex items-center gap-2 text-xs">
             <span>Partner of</span>
-            <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
+            <a href="https://www.respect-slovakia.sk" target="_blank" rel="noreferrer" aria-label="Respect Slovakia">
+              <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
+            </a>
           </div>
         </div>
       </div>

@@ -55,7 +55,9 @@ function Index() {
               <img src={LongLogo} alt="FinKorekt" className="h-24 md:h-32 w-auto object-contain animate-fade-up" style={{ animationDelay: '0.1s' }} />
               <div className="mt-6 flex items-center gap-2">
                 <span className="text-sm uppercase tracking-[0.15em] text-white/75 font-medium">Partner of</span>
-                <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+                <a href="https://www.respect-slovakia.sk" target="_blank" rel="noreferrer" aria-label="Respect Slovakia">
+                  <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+                </a>
               </div>
             </div>
             <p className="mt-6 text-lg text-white/80 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>{t("home.hero.description")}</p>

@@ -56,7 +56,9 @@ function Page() {
               <img src={LongLogo} alt="FinKorekt" className="h-7 w-auto object-contain" />
               <div className="mt-6 flex items-center gap-2">
                 <span className="text-sm text-white/75">Partner of</span>
-                <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+                <a href="https://www.respect-slovakia.sk" target="_blank" rel="noreferrer" aria-label="Respect Slovakia">
+                  <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
+                </a>
               </div>
               <p className="mt-6 text-white/70">
                 {contact.address.split('\n').map((l, i) => (
