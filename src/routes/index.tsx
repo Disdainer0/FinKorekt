@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { team, images } from "@/lib/site-data";
 import { useI18n, usePageMeta } from "@/lib/i18n";
@@ -14,13 +13,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { t } = useI18n();
   usePageMeta("root.title", "root.description");
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const firmy = [
     { title: t("home.businesses.item1.title"), desc: t("home.businesses.item1.desc"), img: images.firmy1 },
@@ -36,17 +28,21 @@ function Index() {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-end text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-navy-deep" />
           <div className="absolute inset-0 pointer-events-none z-10">
             <div className="absolute inset-0 bg-cover bg-[center_right_22%] scale-[1.08] brightness-[0.72] contrast-[0.96] saturate-[0.88]" style={{ backgroundImage: `url(${GeneralPhoto})` }} />
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(8,47,73,0.9) 0%, rgba(8,47,73,0.58) 14%, rgba(8,47,73,0.18) 30%, rgba(8,47,73,0) 50%, rgba(8,47,73,0.18) 70%, rgba(8,47,73,0.58) 86%, rgba(8,47,73,0.9) 100%)" }} />
-            <div className="absolute inset-y-0 left-0 w-[46%] bg-[linear-gradient(to right,rgba(8,47,73,0.84)_0%,rgba(8,47,73,0.34)_52%,rgba(8,47,73,0)_100%)] pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[46%] bg-[linear-gradient(to left,rgba(8,47,73,0.84)_0%,rgba(8,47,73,0.34)_52%,rgba(8,47,73,0)_100%)] pointer-events-none" />
+            <div
+              className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
+              style={{
+                background: "linear-gradient(to top, rgba(16,73,126,0.88) 0%, rgba(16,73,126,0.82) 8%, rgba(28,98,168,0.68) 16%, rgba(49,132,222,0.48) 24%, rgba(49,132,222,0.24) 34%, rgba(49,132,222,0.1) 44%, rgba(49,132,222,0) 100%)",
+                opacity: 1,
+              }}
+            />
           </div>
         </div>
-        <div className="container-fk relative z-30 pt-24 pb-16 animate-fade-up" style={{ transform: `translateY(${scrollY * 0.3}px)` }}>
+        <div className="container-fk absolute inset-0 z-30 flex items-end pb-12 md:pb-20 animate-fade-up -translate-y-4 md:-translate-y-6">
           <div className="space-y-6 max-w-xl md:max-w-2xl pr-6 md:pr-12">
             <div>
               <img src={LongLogo} alt="FinKorekt" className="h-24 md:h-32 w-auto object-contain animate-fade-up" style={{ animationDelay: '0.1s' }} />
