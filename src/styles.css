@@ -57,6 +57,23 @@
   --blue-bright: oklch(0.65 0.18 255);
 }
 
+/* FK dark-blue 90deg gradient requested by user */
+:root {
+  --fk-dark-blue-90: linear-gradient(90deg, #10497E 0%, #1C62A8 55%, #3184DE 100%);
+}
+
+/* Apply gradient to navy backgrounds */
+.bg-navy-deep,
+.bg-navy {
+  background-image: var(--fk-dark-blue-90) !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.bg-fk-dark-blue {
+  background-image: var(--fk-dark-blue-90) !important;
+}
+
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }

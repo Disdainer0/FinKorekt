@@ -43,10 +43,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-fk py-8 flex flex-col md:flex-row gap-6 items-center justify-between">
-          <span className="text-xs text-white/60">© {new Date().getFullYear()} FinKorekt {t("footer.copyright")}</span>
-          <div className="flex items-center gap-2 text-xs text-white/60">
+      <div className="bg-fk-dark-blue">
+        <div className="container-fk py-8 flex flex-col md:flex-row gap-6 items-center justify-between text-white">
+          <span className="text-xs">© {new Date().getFullYear()} FinKorekt {t("footer.copyright")}</span>
+          <div className="flex items-center gap-2 text-xs">
             <span>Partner of</span>
             <img src={RespectLogo} alt="Respect" className="h-4 w-auto object-contain" />
           </div>
