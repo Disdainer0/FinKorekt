@@ -53,7 +53,9 @@ export const team = [
 ];
 
 export const contact = {
-  address: "Werferova 1, 040 11 Košice, 4. poschodie, kancelária 409",
+  address: "Košice, Werferova 1\nAston Building\n4. poschodie, kancelária 409",
+  // Shorter query used for map pin / searches
+  mapQuery: "Košice, Werferova 1 Aston Building",
   phone: "+421 905 984 133",
   email: "samuova@respect-slovakia.sk",
 };

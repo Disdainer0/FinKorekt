@@ -49,8 +49,10 @@
   --border: oklch(0.92 0.01 255);
   --input: oklch(0.92 0.01 255);
   --ring: oklch(0.55 0.17 255);
-  --navy: oklch(0.22 0.06 260);
-  --navy-deep: oklch(0.16 0.05 260);
+  /* Updated brand blues: lighter, more vivid gradient-friendly tones */
+  --navy-deep: #063b63; /* deep blue base */
+  --navy: #1f7fe0; /* brighter blue for gradients/highlights */
+  --navy-gradient: linear-gradient(135deg, var(--navy-deep), var(--navy));
   --blue-soft: oklch(0.78 0.1 255);
   --blue-bright: oklch(0.65 0.18 255);
 }

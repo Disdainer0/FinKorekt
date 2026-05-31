@@ -14,7 +14,7 @@ function Page() {
   const { t } = useI18n();
   usePageMeta("contact.hero.title", "contact.hero.subtitle");
   const items = [
-    { icon: MapPin, label: t("contact.address"), value: contact.address },
+    { icon: MapPin, label: t("contact.address"), value: contact.address.split('\n') },
     { icon: Phone, label: t("contact.phone"), value: contact.phone, href: `tel:${contact.phone.replace(/\s+/g, "")}` },
     { icon: Mail, label: t("contact.email"), value: contact.email, href: `mailto:${contact.email}` },
     { icon: Clock, label: t("contact.hours"), value: t("contact.hours.value") },
@@ -35,7 +35,9 @@ function Page() {
                     <Icon size={20} />
                   </span>
                   <p className="mt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground">{it.label}</p>
-                  <p className="mt-2 text-lg text-navy-deep font-medium">{it.value}</p>
+                  <p className="mt-2 text-lg text-navy-deep font-medium">
+                    {Array.isArray(it.value) ? it.value.map((l, i) => <span key={i}>{l}<br /></span>) : it.value}
+                  </p>
                 </>
               );
               const className = "rounded-3xl p-7 hover:shadow-lg transition-all duration-300 glow-on-hover animate-fade-up opacity-0";
@@ -56,11 +58,15 @@ function Page() {
                 <span className="text-sm text-white/75">Partner of</span>
                 <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
               </div>
-              <p className="mt-6 text-white/70">{contact.address}</p>
+              <p className="mt-6 text-white/70">
+                {contact.address.split('\n').map((l, i) => (
+                  <span key={i}>{l}<br /></span>
+                ))}
+              </p>
 
               <div className="mt-4 rounded-md overflow-hidden relative" style={{ paddingBottom: '100%', height: 0 }}>
                 <iframe
-                  src="https://www.google.com/maps?q=Werferova%201%2C%20040%2011%20Ko%C5%A1ice&output=embed"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(contact.mapQuery)}&output=embed`}
                   title="FinKorekt — Werferova 1, Košice"
                   className="absolute inset-0 w-full h-full border-0"
                   loading="lazy"
@@ -69,7 +75,7 @@ function Page() {
               </div>
             </div>
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`}
               target="_blank"
               rel="noreferrer"
               className="relative inline-flex items-center gap-2 self-start mt-4 h-12 px-6 rounded-full bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/15"

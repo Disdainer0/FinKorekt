@@ -182,15 +182,14 @@ function Page() {
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
           <h2 className="mt-6 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
         </div>
-        <div id="team-cards" className="container-fk mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 relative z-10">
+        <div id="team-cards" className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 relative z-10">
           {team.map((person, index) => (
             <article
               key={person.email}
-              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow"
+              className="bg-white rounded-3xl p-10 shadow-sm hover:shadow-lg transition-shadow"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl text-navy-deep">{person.name}</h3>
-                <span className="font-serif text-2xl text-blue-bright/30">0{index + 1}</span>
               </div>
 
               <div className="mt-5 space-y-4 text-sm">
@@ -202,7 +201,7 @@ function Page() {
 
                     <a
                       href={`tel:${person.phone.replace(/\s+/g, "")}`}
-                      className="block text-sm font-semibold text-navy-deep whitespace-nowrap"
+                      className="block text-sm font-semibold text-navy-deep break-words max-w-full"
                     >
                       {person.phone}
                     </a>
@@ -217,7 +216,7 @@ function Page() {
 
                     <a
                       href={`mailto:${person.email}`}
-                      className="block text-sm font-semibold text-navy-deep whitespace-nowrap"
+                      className="block text-sm font-semibold text-navy-deep break-words max-w-full"
                     >
                       {person.email}
                     </a>

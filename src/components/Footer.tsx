@@ -14,7 +14,14 @@ export function Footer() {
           <Logo light />
           <p className="mt-6 text-sm leading-relaxed text-white/65 max-w-xs">{t("footer.description")}</p>
           <ul className="mt-8 space-y-3 text-sm">
-            <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-blue-soft" /><span>{contact.address}</span></li>
+            <li className="flex items-start gap-3">
+              <MapPin size={16} className="mt-0.5 text-blue-soft" />
+              <span>
+                {contact.address.split('\n').map((l, i) => (
+                  <span key={i}>{l}{i < contact.address.split('\n').length - 1 && <br />}</span>
+                ))}
+              </span>
+            </li>
             <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5 text-blue-soft" /><a href={`tel:${contact.phone.replace(/\s+/g, "")}`}>{contact.phone}</a></li>
             <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5 text-blue-soft" /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
           </ul>
