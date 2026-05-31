@@ -53,7 +53,7 @@ export const team = [
 ];
 
 export const contact = {
-  address: "Košice, Werferova 1, 4. poschodie, kancelária 409",
+  address: "Werferova 1, 040 11 Košice, 4. poschodie, kancelária 409",
   phone: "+421 905 984 133",
   email: "samuova@respect-slovakia.sk",
 };

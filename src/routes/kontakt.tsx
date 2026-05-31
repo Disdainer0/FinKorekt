@@ -56,13 +56,23 @@ function Page() {
                 <span className="text-sm text-white/75">Partner of</span>
                 <img src={RespectLogo} alt="Respect" className="h-5 w-auto object-contain" />
               </div>
-              <p className="mt-6 text-white/70">{t("contact.info.subtitle")}</p>
+              <p className="mt-6 text-white/70">{contact.address}</p>
+
+              <div className="mt-4 rounded-md overflow-hidden relative" style={{ paddingBottom: '100%', height: 0 }}>
+                <iframe
+                  src="https://www.google.com/maps?q=Werferova%201%2C%20040%2011%20Ko%C5%A1ice&output=embed"
+                  title="FinKorekt — Werferova 1, Košice"
+                  className="absolute inset-0 w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
             <a
-              href="https://www.google.com/maps"
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
               target="_blank"
               rel="noreferrer"
-              className="relative inline-flex items-center gap-2 self-start mt-8 h-12 px-6 rounded-full bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/15"
+              className="relative inline-flex items-center gap-2 self-start mt-4 h-12 px-6 rounded-full bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/15"
             >
               {t("contact.map")} <ExternalLink size={14} />
             </a>
