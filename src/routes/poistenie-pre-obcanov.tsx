@@ -176,47 +176,51 @@ function Page() {
       <section className="py-28 bg-secondary relative overflow-hidden">
         <div className="container-fk text-center max-w-3xl mx-auto relative z-10">
           <p className="eyebrow text-blue-bright justify-center mx-auto">Sme tu pre vás</p>
+          <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Sme štyri odborníčky, ktoré spájajú vášeň pre poistné poradenstvo s úprimným záujmom o každého klienta.</p>
-          <h2 className="mt-6 text-4xl md:text-5xl text-navy-deep">Náš tím</h2>
         </div>
         <div id="team-cards" className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 relative z-10">
-          {team.map((person, index) => (
+          {team.map((person) => (
             <article
               key={person.email}
-              className="bg-white rounded-3xl p-10 shadow-sm hover:shadow-lg transition-shadow"
+              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow"
             >
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl text-navy-deep">{person.name}</h3>
+              <div className="aspect-[5/6] overflow-hidden">
+                <img src={person.img} alt={person.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
-              <div className="mt-5 space-y-4 text-sm">
-                <div className="flex items-start gap-3">
-                  <Phone size={18} className="mt-0.5 shrink-0 text-blue-bright" />
+              <div className="p-8">
+                <h3 className="text-xl text-navy-deep">{person.name}</h3>
 
-                  <div>
-                    <div className="text-xs text-muted-foreground">Mobil</div>
+                <div className="mt-5 space-y-4 text-sm">
+                  <div className="flex items-start gap-3">
+                    <Phone size={18} className="mt-0.5 shrink-0 text-blue-bright" />
 
-                    <a
-                      href={`tel:${person.phone.replace(/\s+/g, "")}`}
-                      className="block text-sm font-semibold text-navy-deep break-words max-w-full"
-                    >
-                      {person.phone}
-                    </a>
+                    <div>
+                      <div className="text-xs text-muted-foreground">Mobil</div>
+
+                      <a
+                        href={`tel:${person.phone.replace(/\s+/g, "")}`}
+                        className="block text-sm font-semibold text-navy-deep break-words max-w-full"
+                      >
+                        {person.phone}
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-start gap-3">
-                  <Mail size={18} className="mt-0.5 shrink-0 text-blue-bright" />
+                  <div className="flex items-start gap-3">
+                    <Mail size={18} className="mt-0.5 shrink-0 text-blue-bright" />
 
-                  <div>
-                    <div className="text-xs text-muted-foreground">E-mail</div>
+                    <div>
+                      <div className="text-xs text-muted-foreground">E-mail</div>
 
-                    <a
-                      href={`mailto:${person.email}`}
-                      className="block text-sm font-semibold text-navy-deep break-words max-w-full"
-                    >
-                      {person.email}
-                    </a>
+                      <a
+                        href={`mailto:${person.email}`}
+                        className="block text-sm font-semibold text-navy-deep break-words max-w-full"
+                      >
+                        {person.email}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
