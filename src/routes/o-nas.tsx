@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { BadgeCheck, Handshake, MessageSquareQuote, ShieldCheck } from "lucide-react";
 import { team, images } from "@/lib/site-data";
 import { PageHero } from "@/components/PageHero";
 import { useI18n, usePageMeta } from "@/lib/i18n";
@@ -12,10 +13,10 @@ function Page() {
   usePageMeta("about.hero.title", "about.hero.subtitle");
 
   const mission = [
-    { title: t("about.mission.item1.title"), desc: t("about.mission.item1.desc") },
-    { title: t("about.mission.item2.title"), desc: t("about.mission.item2.desc") },
-    { title: t("about.mission.item3.title"), desc: t("about.mission.item3.desc") },
-    { title: t("about.mission.item4.title"), desc: t("about.mission.item4.desc") },
+    { icon: ShieldCheck, title: t("about.mission.item1.title"), desc: t("about.mission.item1.desc") },
+    { icon: MessageSquareQuote, title: t("about.mission.item2.title"), desc: t("about.mission.item2.desc") },
+    { icon: Handshake, title: t("about.mission.item3.title"), desc: t("about.mission.item3.desc") },
+    { icon: BadgeCheck, title: t("about.mission.item4.title"), desc: t("about.mission.item4.desc") },
   ];
 
   const values = [
@@ -57,13 +58,18 @@ function Page() {
           <p className="mt-5 text-muted-foreground animate-fade-up" style={{ animationDelay: '0.2s' }}>{t("about.mission.subtitle")}</p>
         </div>
         <div className="container-fk mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 relative z-10">
-          {mission.map((b, i) => (
+          {mission.map((b, i) => {
+            const Icon = b.icon;
+            return (
             <div key={b.title} className="bg-white rounded-3xl p-8 hover:shadow-lg transition-all duration-300 glow-on-hover animate-fade-up opacity-0" style={{ animationDelay: `${0.2 + i * 0.1}s`, animationFillMode: 'forwards', animation: 'fadeUp 0.6s ease-out forwards' }}>
-              <span className="font-serif text-blue-bright text-2xl">0{i + 1}</span>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-bright/10 text-blue-bright">
+                <Icon size={20} />
+              </span>
               <h3 className="mt-4 text-xl text-navy-deep">{b.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
