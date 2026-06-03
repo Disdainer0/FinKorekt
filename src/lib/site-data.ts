@@ -6,6 +6,14 @@ const partnerLogoMap = import.meta.glob("../IMG/partners/*", {
 
 const partnerLogo = (fileName: string) => partnerLogoMap[`../IMG/partners/${fileName}`] ?? "";
 
+const teamPhotoMap = import.meta.glob("../IMG/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+const teamPhoto = (fileName: string) => teamPhotoMap[`../IMG/${fileName}`] ?? "";
+
 export const partners = [
   { name: "Allianz", url: "https://allianzsp.sk", logo: partnerLogo("allianz.png") },
   { name: "Kooperativa", url: "https://koop.sk", logo: partnerLogo("kooperativa.png") },
@@ -46,10 +54,10 @@ const u = (id: string, w = 1200, h = 1500) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
 export const team = [
-  { name: "Ing. Gabriela Šamouvá", email: "samuova@respect-slovakia.sk", phone: "+421 905 984 133", img: u("photo-1573496359142-b8d87734a5a2", 600, 720) },
-  { name: "Ing. Dagmar Rovňáková", email: "rovnakova@respect-slovakia.sk", phone: "+421 915 895 320", img: u("photo-1580489944761-15a19d654956", 600, 720) },
-  { name: "Ing. Slivková Anežka", email: "slivkova@respect-slovakia.sk", phone: "+421 908 996 474", img: u("photo-1438761681033-6461ffad8d80", 600, 720) },
-  { name: "Ing. Monika Fridrichová", email: "fridrichova@respect-slovakia.sk", phone: "+421 905 116 898", img: u("photo-1494790108377-be9c29b29330", 600, 720) },
+  { name: "Ing. Gabriela Šamouvá", email: "samuova@respect-slovakia.sk", phone: "+421 905 984 133", img: teamPhoto("Samouva.jpg") },
+  { name: "Ing. Dagmar Rovňáková", email: "rovnakova@respect-slovakia.sk", phone: "+421 915 895 320", img: teamPhoto("Rovnakova.PNG") },
+  { name: "Ing. Slivková Anežka", email: "slivkova@respect-slovakia.sk", phone: "+421 908 996 474", img: teamPhoto("Slivkova.PNG") },
+  { name: "Ing. Monika Fridrichová", email: "fridrichova@respect-slovakia.sk", phone: "+421 905 116 898", img: teamPhoto("Fridrichova.jpg") },
 ];
 
 export const contact = {
